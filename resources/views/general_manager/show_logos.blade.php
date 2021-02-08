@@ -4,99 +4,8 @@
     <!-- content-->
     <div class="content">
         <!--  section  -->
-        <section class="parallax-section dashboard-header-sec gradient-bg" data-scrollax-parent="true">
-            <div class="container">
-                <div class="dashboard-header_conatiner fl-wrap dashboard-header_title">
-                    <h1>Bienvenido(a) : <span>{{ auth()->user()->name }}</span></h1>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="dashboard-header fl-wrap">
-                <div class="container">
-                    <div class="dashboard-header_conatiner fl-wrap">
-                        <div class="dashboard-header-avatar">
-                            <img src="{{ asset('/storage/administrator/uploads/avatars/' . auth()->user()->avatar) }}"
-                                alt="">
-                            <a href="dashboard-myprofile.html" class="color-bg edit-prof_btn"><i
-                                    class="fal fa-edit"></i></a>
-                        </div>
-                        <div class="dashboard-header-stats-wrap">
-                            <div class="dashboard-header-stats">
-                                <div class="swiper-container">
-                                    <div class="swiper-wrapper">
-                                        <!--  dashboard-header-stats-item -->
-                                        <div class="swiper-slide">
-                                            <div class="dashboard-header-stats-item">
-                                                <i class="fal fa-map-marked"></i>
-                                                Active Listings
-                                                <span>21</span>
-                                            </div>
-                                        </div>
-                                        <!--  dashboard-header-stats-item end -->
-                                        <!--  dashboard-header-stats-item -->
-                                        <div class="swiper-slide">
-                                            <div class="dashboard-header-stats-item">
-                                                <i class="fal fa-chart-bar"></i>
-                                                Listing Views
-                                                <span>1054</span>
-                                            </div>
-                                        </div>
-                                        <!--  dashboard-header-stats-item end -->
-                                        <!--  dashboard-header-stats-item -->
-                                        <div class="swiper-slide">
-                                            <div class="dashboard-header-stats-item">
-                                                <i class="fal fa-comments-alt"></i>
-                                                Total Reviews
-                                                <span>79</span>
-                                            </div>
-                                        </div>
-                                        <!--  dashboard-header-stats-item end -->
-                                        <!--  dashboard-header-stats-item -->
-                                        <div class="swiper-slide">
-                                            <div class="dashboard-header-stats-item">
-                                                <i class="fal fa-heart"></i>
-                                                Times Bookmarked
-                                                <span>654</span>
-                                            </div>
-                                        </div>
-                                        <!--  dashboard-header-stats-item end -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  dashboard-header-stats  end -->
-                            <div class="dhs-controls">
-                                <div class="dhs dhs-prev"><i class="fal fa-angle-left"></i></div>
-                                <div class="dhs dhs-next"><i class="fal fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="gradient-bg-figure" style="right:-30px;top:10px;"></div>
-            <div class="gradient-bg-figure" style="left:-20px;bottom:30px;"></div>
-            <div class="circle-wrap" style="left:120px;bottom:120px;"
-                data-scrollax="properties: { translateY: '-200px' }">
-                <div class="circle_bg-bal circle_bg-bal_small"></div>
-            </div>
-            <div class="circle-wrap" style="right:420px;bottom:-70px;"
-                data-scrollax="properties: { translateY: '150px' }">
-                <div class="circle_bg-bal circle_bg-bal_big"></div>
-            </div>
-            <div class="circle-wrap" style="left:420px;top:-70px;" data-scrollax="properties: { translateY: '100px' }">
-                <div class="circle_bg-bal circle_bg-bal_big"></div>
-            </div>
-            <div class="circle-wrap" style="left:40%;bottom:-70px;">
-                <div class="circle_bg-bal circle_bg-bal_middle"></div>
-            </div>
-            <div class="circle-wrap" style="right:40%;top:-10px;">
-                <div class="circle_bg-bal circle_bg-bal_versmall" data-scrollax="properties: { translateY: '-350px' }">
-                </div>
-            </div>
-            <div class="circle-wrap" style="right:55%;top:90px;">
-                <div class="circle_bg-bal circle_bg-bal_versmall" data-scrollax="properties: { translateY: '-350px' }">
-                </div>
-            </div>
-        </section>
+        @include('layouts.sub_header')
+
         <!--  section  end-->
         <!--  section  -->
         <section class="gray-bg main-dashboard-sec" id="sec1">
@@ -122,11 +31,13 @@
                                     </li>
                                 </ul>
                             </div>
-                            <button class="logout_btn color2-bg">Log Out <i class="fas fa-sign-out"></i></button>
-                        </div>
+                            <a href="{{ route('logout') }}" class="logout_btn color2-bg"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Cerrar sesión
+                            </a>                        </div>
                     </div>
                     <a class="back-tofilters color2-bg custom-scroll-link fl-wrap"
-                        href="{{ route('administrator') }}">Regresar al menú<i class="fas fa-caret-up"></i></a>
+                        href="{{ route('show.all_customers') }}">Regresar al menú<i class="fas fa-caret-up"></i></a>
 
                     <div class="clearfix"></div>
                 </div>
@@ -144,18 +55,17 @@
                                 <div class="dashboard-message">
                                     <div class="booking-list-contr">
                                         <a href="" class="color-bg tolt aaaa-open" data-microtip-position="left"
-                                            data-tooltip="Visualizar" data-tittle="{{ $logo['id'] }}"><i
-                                                class="fal fa-expand-arrows-alt"></i></a>
-                                        <a href="/download/{{ $logo['path'] }}" class="color-bg tolt"
+                                        data-tooltip="Visualizar" data-tittle="{{$logo['logo_id']}}"><i class="fal fa-expand-arrows-alt"></i></a>
+                                        <a href="/download_logos/{{ $logo['path'] }}" class="color-bg tolt"
                                             data-microtip-position="left" data-tooltip="Descargar"><i
                                                 class="fal fa-download"></i></a>
                                         <a href="{{ route('show.comments_adm', $logo['logo_id']) }}" class="color-bg tolt"
                                             data-microtip-position="left" data-tooltip="Comentar"><i
                                                 class="fal fa-comments"></i></a>
-                                        <a href="{{ route('show.logos', $customer['id']) }}" class="color-bg tolt"
+                                        <a href="{{ route('edit.logo', $logo['logo_id']) }}" class="color-bg tolt"
                                             data-microtip-position="left" data-tooltip="Editar"><i
                                                 class="fal fa-edit"></i></a>
-                                        <a href="#" class="red-bg tolt" data-microtip-position="left"
+                                        <a href="{{ route('delete.logo', $logo['logo_id']) }}" class="red-bg tolt" data-microtip-position="left"
                                             data-tooltip="Eliminar"><i class="fal fa-trash"></i></a>
                                     </div>
                                     <div class="dashboard-message-text">
@@ -193,15 +103,11 @@
     <div class="reg-overlay"></div>
     <div class="main-register-holder tabs-act">
         <div class="main-register fl-wrap  modal_view_logo_main">
-            <div class="main-register_title">Logo <span><strong>test</strong>test<strong>.</strong></span></div>
+            <div class="main-register_title">Imagen <span><strong>Logo</strong></span></div>
             <div class="close-reg"><i class="fal fa-times"></i></div>
-            <!--tabs -->
             <div class="tabs-container">
                 <div class="soc-log fl-wrap">
-                    <img src="{{ asset('/storage/administrator/uploads/logos/cliente_4_number1.png') }}" class="respimg"
-                        alt="">
-                    <div class="log-separator fl-wrap"><span></span></div>
-                    <a href="#" class="facebook-log"><i class="fas fa-download"></i> Descargar</a>
+                    <div class="img_logo fl-wrap"><span></span></div>
                 </div>
                 <div class="wave-bg">
                     <div class='wave -one'></div>

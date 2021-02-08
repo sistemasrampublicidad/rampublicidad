@@ -40,9 +40,56 @@ class GeneralManager extends Controller
         $logos = Logos::join('details_logo', 'details_logo.logo_id', '=', 'logos.id')
             ->join('brandings', 'brandings.id', '=', 'details_logo.branding_id')
             ->where('customer_id', '=', $id)
+            ->select('logos.*', 'logos.id as logo_id', 'details_logo.*', 'brandings.*')
             ->get()
             ->toArray();
         return view('general_manager.show_logos', compact('customer', 'logos'));
+    }
+
+    public function edit_logo($id)
+    {
+        $logo = Logos::join('details_logo', 'details_logo.logo_id', '=', 'logos.id')
+            ->join('brandings', 'brandings.id', '=', 'details_logo.branding_id')
+            ->where('logos.id', '=', $id)
+            ->select('logos.*', 'logos.id as logo_id', 'details_logo.*', 'brandings.*')
+            ->get()
+            ->toArray();
+        $logo = $logo[0];
+
+        $customer = User::where('id', '=', $logo['customer_id'])->get()->toArray();
+        $customer = $customer[0];
+
+        return view('general_manager.edit_logo',  compact('customer', 'logo'));
+    }
+
+    public function update_logo(Request $request)
+    {
+        $logo = Logos::where('id', '=', $request->get('logo_id'))->get()->toArray();
+        $logo = $logo[0];
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $image->move('storage/administrator/uploads/logos/', $logo['path']);
+            $logo_update = Logos::where('logos.id', '=', $request->get('logo_id'))
+                ->join('details_logo', 'details_logo.logo_id', '=', 'logos.id')
+                ->update([
+                    'name' => $request->get('name'),
+                    'description' => $request->get('description'),
+                ]);
+        } else {
+            $logo_update = Logos::where('logos.id', '=', $request->get('logo_id'))
+                ->join('details_logo', 'details_logo.logo_id', '=', 'logos.id')
+                ->update([
+                    'name' => $request->get('name'),
+                    'description' => $request->get('description'),
+                ]);
+        }
+        return redirect(route('show.logos', $request->get('customer')));
+    }
+    public function delete_logo($id)
+    {
+        $logo = Logos::where('id', '=', $id)->delete();
+
+        return back()->with('success', 'Se eliminó el logo');
     }
 
     public function add_logo($id)
@@ -51,6 +98,7 @@ class GeneralManager extends Controller
         $customer = $customer[0];
         return view('general_manager.add_logo', compact('customer'));
     }
+
 
     public function store_logo(Request $request)
     {
@@ -206,82 +254,74 @@ class GeneralManager extends Controller
         return view('general_manager.show_all_logos', compact('customer', 'logos'));
     }
 
-
     public function update_customer(Request $request)
     {
         $customer = User::where('id', '=', $request->get('customer_id'))->get()->toArray();
         $customer = $customer[0];
 
-  
 
-        if($request->file('avatar')){
+
+        if ($request->file('avatar')) {
             $logo = $request->file('avatar');
             $extension = $logo->getClientOriginalExtension();
             $filename = "cliente_" . $request->get('customer_id') . "logo." . $extension;
             $logo->move('storage/administrator/uploads/avatars/', $filename);
-           
-            $customer_update = User::where('id','=', $request->get('customer_id'))
-            ->update([
-                'name' => $request->get('name'),
-                'document' => $request->get('ruc'),
-                'email' => $request->get('email'),
-                'name_representative' => $request->get('name_representative'),
-                'phone_representative' => $request->get('phone_representative'),
-                'avatar' =>  $filename,
-                'password' =>Hash::make($request->get('password')),
-                'website' => $request->get('website'),
-                'facebook' => $request->get('facebook'),
-                'instagram' => $request->get('instagram'),
-                'linkendin' => $request->get('linkendin')
-                ]);
-    
 
-
-        }else{
-            $customer_update = User::where('id','=', $request->get('customer_id'))
-            ->update([
-                'name' => $request->get('name'),
-                'document' => $request->get('ruc'),
-                'email' => $request->get('email'),
-                'name_representative' => $request->get('name_representative'),
-                'phone_representative' => $request->get('phone_representative'),
-                'website' => $request->get('website'),
-                'facebook' => $request->get('facebook'),
-                'password' =>Hash::make($request->get('password')),
-                'instagram' => $request->get('instagram'),
-                'linkendin' => $request->get('linkendin')
+            if ($request->get('password') == '') {
+                $customer_update = User::where('id', '=', $request->get('customer_id'))
+                    ->update([
+                        'name' => $request->get('name'),
+                        'document' => $request->get('ruc'),
+                        'email' => $request->get('email'),
+                        'name_representative' => $request->get('name_representative'),
+                        'phone_representative' => $request->get('phone_representative'),
+                        'avatar' =>  $filename,
+                        'website' => $request->get('website'),
+                        'facebook' => $request->get('facebook'),
+                        'instagram' => $request->get('instagram'),
+                        'linkendin' => $request->get('linkendin')
+                    ]);
+            } else {
+                $customer_update = User::where('id', '=', $request->get('customer_id'))
+                    ->update([
+                        'name' => $request->get('name'),
+                        'document' => $request->get('ruc'),
+                        'email' => $request->get('email'),
+                        'name_representative' => $request->get('name_representative'),
+                        'phone_representative' => $request->get('phone_representative'),
+                        'avatar' =>  $filename,
+                        'password' => Hash::make($request->get('password')),
+                        'website' => $request->get('website'),
+                        'facebook' => $request->get('facebook'),
+                        'instagram' => $request->get('instagram'),
+                        'linkendin' => $request->get('linkendin')
+                    ]);
+            }
+        } else {
+            $customer_update = User::where('id', '=', $request->get('customer_id'))
+                ->update([
+                    'name' => $request->get('name'),
+                    'document' => $request->get('ruc'),
+                    'email' => $request->get('email'),
+                    'name_representative' => $request->get('name_representative'),
+                    'phone_representative' => $request->get('phone_representative'),
+                    'website' => $request->get('website'),
+                    'facebook' => $request->get('facebook'),
+                    'password' => Hash::make($request->get('password')),
+                    'instagram' => $request->get('instagram'),
+                    'linkendin' => $request->get('linkendin')
                 ]);
-            
         }
 
         return redirect(route('show.all_customers'));
     }
     public function store_customer(Request $request)
     {
-        if($request->file('avatar')){
+        if ($request->file('avatar')) {
             $logo = $request->file('avatar');
             $extension = $logo->getClientOriginalExtension();
             $filename = "cliente_" . $request->get('customer_id') . "logo." . $extension;
             $logo->move('storage/administrator/uploads/avatars/', $filename);
-           
-            $new_customer = User::create([
-                'name' => $request->get('name'),
-                'document' => $request->get('ruc'),
-                'email' => $request->get('email'),
-                'name_representative' => $request->get('name_representative'),
-                'phone_representative' => $request->get('phone_representative'),
-                'avatar' =>$filename,
-                'website' => $request->get('website'),
-                'password' =>Hash::make($request->get('password')),
-                'role_id' => 4,
-                'facebook' => $request->get('facebook'),
-                'instagram' => $request->get('instagram'),
-                'linkendin' => $request->get('linkendin')
-            ]);
-
-            $new_customer->save();
-
-        }else{
 
             $new_customer = User::create([
                 'name' => $request->get('name'),
@@ -289,15 +329,32 @@ class GeneralManager extends Controller
                 'email' => $request->get('email'),
                 'name_representative' => $request->get('name_representative'),
                 'phone_representative' => $request->get('phone_representative'),
+                'avatar' => $filename,
                 'website' => $request->get('website'),
-                'password' =>Hash::make($request->get('password')),
+                'password' => Hash::make($request->get('password')),
+                'role_id' => 4,
+                'facebook' => $request->get('facebook'),
+                'instagram' => $request->get('instagram'),
+                'linkendin' => $request->get('linkendin')
+            ]);
+
+            $new_customer->save();
+        } else {
+
+            $new_customer = User::create([
+                'name' => $request->get('name'),
+                'document' => $request->get('ruc'),
+                'email' => $request->get('email'),
+                'name_representative' => $request->get('name_representative'),
+                'phone_representative' => $request->get('phone_representative'),
+                'website' => $request->get('website'),
+                'password' => Hash::make($request->get('password')),
                 'role_id' => 4,
                 'facebook' => $request->get('facebook'),
                 'instagram' => $request->get('instagram'),
                 'linkendin' => $request->get('linkendin')
             ]);
             $new_customer->save();
-
         }
 
         return redirect(route('show.all_customers'));
@@ -321,44 +378,64 @@ class GeneralManager extends Controller
         return view('general_manager.add_customer');
     }
 
-    public function download($file_name) {
-        $file_path = public_path('storage/administrator/uploads/logos/'.$file_name);
+    public function download_logos($file_name)
+    {
+        $file_path = public_path('storage/administrator/uploads/logos/' . $file_name);
         return response()->download($file_path);
-      }
+    }
+    public function download_planners($file_name)
+    {
+        $file_path = public_path('storage/administrator/uploads/planners/' . $file_name);
+        return response()->download($file_path);
+    }
 
 
-      public function show_comments($id)
-      {
-          $customer = User::where('id', '=', auth()->user()->id)->get()->toArray();
-          $customer = $customer[0];
-          $logo = Logos::find($id);
-  
-          $comments = Logos::join('comments_logos', 'logos.id', '=', 'comments_logos.logo_id')
-          ->join('users', 'comments_logos.commentator_id', '=', 'users.id')
-              ->where('logos.id', '=', $id)
-              ->get()
-              ->toArray();
-  
-  // dd($comments);
-  
-          return view('general_manager.show_comments', compact('customer', 'comments','logo'));
-      }
-  
+    public function show_comments($id)
+    {
+        $customer = User::where('id', '=', auth()->user()->id)->get()->toArray();
+        $customer = $customer[0];
+        $logo = Logos::find($id);
+
+        $comments = Logos::join('comments_logos', 'logos.id', '=', 'comments_logos.logo_id')
+            ->join('users', 'comments_logos.commentator_id', '=', 'users.id')
+            ->where('logos.id', '=', $id)
+            ->get()
+            ->toArray();
+
+        // dd($comments);
+
+        return view('general_manager.show_comments', compact('customer', 'comments', 'logo'));
+    }
 
 
-      public function store_comments_adm(Request $request)
-      {
-          $new_comment = CommentsLogos::create([
-              'logo_id' => $request->get('id_logo'),
-              'type' => $request->get('type'),
-              'comment' => $request->get('comment'),
-              'commentator_id' => auth()->user()->id,
-          ]);
-  
-          $new_comment->save();
-  
-          return back()->with('success','Se guardó el comentario');
-      }
 
-      
+    public function store_comments_adm(Request $request)
+    {
+        $new_comment = CommentsLogos::create([
+            'logo_id' => $request->get('id_logo'),
+            'type' => $request->get('type'),
+            'comment' => $request->get('comment'),
+            'commentator_id' => auth()->user()->id,
+        ]);
+
+        $new_comment->save();
+
+        return back()->with('success', 'Se guardó el comentario');
+    }
+
+
+    public function show_all_planners()
+    {
+        $customer = User::where('id', '=', Auth()->id())->get()->toArray();
+        $customer = $customer[0];
+        $planners = Planners::join('details_planners', 'details_planners.planner_id', '=', 'planners.id')
+            ->join('brandings', 'brandings.id', '=', 'details_planners.branding_id')
+            ->where('status', '=', 'available')
+            ->select('planners.*', 'planners.id as planner_id', 'details_planners.*', 'brandings.*')
+            ->get()
+            ->toArray();
+
+        return view('general_manager.show_all_planners', compact('customer', 'planners'));
+    }
+
 }

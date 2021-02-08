@@ -1,7 +1,7 @@
 <section class="parallax-section dashboard-header-sec gradient-bg" data-scrollax-parent="true">
     <div class="container">
         <div class="dashboard-header_conatiner fl-wrap dashboard-header_title">
-            <h1>Welcome : <span>{{ auth()->user()->name }}</span></h1>
+            <h1>Bienvenido : <span>{{ auth()->user()->name }}</span></h1>
         </div>
     </div>
     <div class="clearfix"></div>
@@ -9,7 +9,8 @@
         <div class="container">
             <div class="dashboard-header_conatiner fl-wrap">
                 <div class="dashboard-header-avatar">
-                    <img src="{{asset(auth()->user()->avatar)}}" alt="">
+                    <img src="{{ asset('/storage/administrator/uploads/avatars/' . auth()->user()->avatar) }}"
+                    alt="">
                     <a href="dashboard-myprofile.html" class="color-bg edit-prof_btn"><i
                             class="fal fa-edit"></i></a>
                 </div>

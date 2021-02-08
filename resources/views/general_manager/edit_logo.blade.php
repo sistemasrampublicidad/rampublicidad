@@ -35,38 +35,35 @@
                             </a>                        </div>
                     </div>
                     <a class="back-tofilters color2-bg custom-scroll-link fl-wrap" href="{{route('show.all_customers')}}">Regresar al menú<i class="fas fa-caret-up"></i></a>
-                            </a>
-                    <div class="clearfix"></div>
                 </div>
                 <!-- dashboard-menu  end-->
                 <!-- dashboard content-->
                 <div class="col-md-9">
                     <div class="dashboard-title   fl-wrap">
-                        <h3>Agregar Planner </h3>
+                        <h3>Editar Logo: {{$logo['name']}}</h3>
                     </div>
-                    <form method="POST" action="{{ route('store.planner') }}" accept-charset="UTF-8"
+                    <form method="POST" action="{{ route('update.logo') }}" accept-charset="UTF-8"
                           enctype="multipart/form-data" >
                         @csrf
                         <div class="profile-edit-container fl-wrap block_box ">
                             <div class="custom-form">
-                                <input type="hidden" name="employee" value="{{auth()->id()}}">
-                                <input type="hidden" name="customer" value="{{$customer['id']}}">
+                                <input type="hidden" name="customer" value="{{$logo['customer_id']}}">
+                                <input type="hidden" name="logo_id" value="{{$logo['logo_id']}}">
                                 <label>Nombre <span>*</span> </label>
                                 <input type="text" placeholder="Escriba el nombre" name="name" onClick="this.select()"
-                                       value="">
+                                       value="{{$logo['name']}}">
                                 <label>Descripción <span>*</span> </label>
                                 <textarea cols="40" rows="3" placeholder="Escriba la descripción"
-                                          name="description"></textarea>
-                                <div class="fw-separator"></div>
-                                <label>Archivo <span>*</span> </label>
+                                          name="description">{{$logo['description']}}</textarea>
+                                <label>Imagen <span>*</span> </label>
                                 <div class="add-list-media-wrap fuzone">
                                     <div class="fu-text">
-                                        <span><i class="fal fa-image"></i> Click aquí o arrastre el archivo</span>
+                                        <span><i class="fal fa-image"></i> Click aquí o arrastre la imagen</span>
                                         <span class="photoUpload-files fl-wrap"></span>
                                     </div>
                                     <input type="file" class="form-control" name="image" >
                                 </div>
-                                <button type="submit" class="btn float-btn color2-bg">Guardar <i
+                                <button type="submit" class="btn float-btn color2-bg">Editar <i
                                         class="fas fa-caret-right"></i></button>
                                 <div class="clearfix"></div>
                             </div>

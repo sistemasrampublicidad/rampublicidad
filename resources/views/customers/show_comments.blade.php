@@ -28,7 +28,7 @@
                                         <div class="swiper-slide">
                                             <div class="dashboard-header-stats-item">
                                                 <i class="fal fa-map-marked"></i>
-                                                Active Listings
+                                                Active Lsistings
                                                 <span>21</span>
                                             </div>
                                         </div>
@@ -115,18 +115,20 @@
                                     {{ $customer['name'] }}
                                 </h3>
                                 <ul class="no-list-style">
-                                    <li><a href="{{ route('show.my_logos', $customer['id']) }}"><i
-                                                class="fal fa-chart-line"></i>Logos</a></li>
+                                    <li><a href="{{route('show.my_logos',auth()->user()->id)}}"><i class="fal fa-chart-line"></i>Mis Logos</a></li>
+
                                     <li><a href="{{ route('show.planners', $customer['id']) }}"><i
                                                 class="fal fa-rss"></i>Planners <span>7</span></a>
                                     </li>
                                 </ul>
                             </div>
-                            <button class="logout_btn color2-bg">Log Out <i class="fas fa-sign-out"></i></button>
-                        </div>
+<a href="{{ route('logout') }}" class="logout_btn color2-bg"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Cerrar sesión
+                            </a>                        </div>
                     </div>
-                    <a class="back-tofilters color2-bg custom-scroll-link fl-wrap"
-                        href="{{ route('administrator') }}">Regresar al menú<i class="fas fa-caret-up"></i></a>
+                    <a class="back-tofilters color2-bg custom-scroll-link fl-wrap" href="{{route('customers.index')}}">Regresar al menú<i class="fas fa-caret-up"></i></a>
+
 
                     <div class="clearfix"></div>
                 </div>

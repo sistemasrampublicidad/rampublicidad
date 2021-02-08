@@ -47,13 +47,13 @@
                 <!-- dashboard content-->
                 <div class="col-md-9">
                     <div class="dashboard-list-box  fl-wrap">
-                        @foreach ($logos as $logo)
+                        @foreach ($planners as $planner)
                             <div class="dashboard-list fl-wrap">
                                 <div class="dashboard-message">
                                     <div class="booking-list-contr">
-                                        <a href="" class="color-bg tolt aaaa-open" data-microtip-position="left"
-                                            data-tooltip="Visualizar" data-tittle="{{$logo['logo_id']}}"><i class="fal fa-expand-arrows-alt"></i></a>
-                                        <a href="/download_logos/{{ $logo['path'] }}" class="color-bg tolt"
+                                        <a href="" class="color-bg tolt aaaa-open-planner" data-microtip-position="left"
+                                            data-tooltip="Visualizar" data-tittle="{{$planner['planner_id']}}"><i class="fal fa-expand-arrows-alt"></i></a>
+                                        <a href="/download_planners/{{ $planner['path'] }}" class="color-bg tolt"
                                             data-microtip-position="left" data-tooltip="Descargar"><i
                                                 class="fal fa-download"></i></a>
                                         <a href="{{ route('show.logos', $customer['id']) }}" class="color-bg tolt"
@@ -68,10 +68,9 @@
                                                 <div class="swiper-wrapper lightgallery">
                                                     <div class="swiper-slide hov_zoom swiper-slide-active"
                                                         data-swiper-slide-index="0">
-                                                        <img src="{{ asset('/storage/administrator/uploads/logos/'.$logo['path']) }}" alt="">
-                                                        <h4><a href="listing-single.html">{{ $logo['name'] }}</a></h4>
+                                                        <h4><a href="listing-single.html">{{ $planner['name'] }}</a></h4>
                                                         <div class="geodir-category-location clearfix"><a href="#">
-                                                                {{ $logo['description'] }}<br>{{ $logo['created_at'] }}</a>
+                                                                {{ $planner['description'] }}<br>{{ $planner['created_at'] }}</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -83,35 +82,17 @@
                                 </div>
                             </div>
                         @endforeach
-
                     </div>
-                    <!-- dashboard-list-box end-->
-                    {{-- <div class="pagination">--}}
-                        {{-- <a href="#" class="prevposts-link"><i
-                                class="fas fa-caret-left"></i><span>Prev</span></a>--}}
-                        {{-- <a href="#">1</a>--}}
-                        {{-- <a href="#"
-                            class="current-page">2</a>--}}
-                        {{-- <a href="#">3</a>--}}
-                        {{-- <a href="#">...</a>--}}
-                        {{-- <a href="#">7</a>--}}
-                        {{-- <a href="#" class="nextposts-link"><span>Next</span><i
-                                class="fas fa-caret-right"></i></a>--}}
-                        {{-- </div>--}}
                 </div>
-                <!-- dashboard content end-->
             </div>
         </section>
     </div>
-    <!--content end-->
 </div>
-
-<!-- Modals -->
-<div class="main-register-wrap modal_view_logo">
+<div class="main-register-wrap modal_view_planner">
     <div class="reg-overlay"></div>
     <div class="main-register-holder tabs-act">
-        <div class="main-register fl-wrap  modal_view_logo_main">
-            <div class="main-register_title">Imagen <span><strong>Logo</strong></span></div>
+        <div class="main-register fl-wrap  modal_view_planner_main">
+            <div class="main-register_title">Documento <span><strong></strong></span></div>
             <div class="close-reg"><i class="fal fa-times"></i></div>
             <div class="tabs-container">
                 <div class="soc-log fl-wrap">
@@ -125,6 +106,7 @@
         </div>
     </div>
 </div>
+
 
 
 

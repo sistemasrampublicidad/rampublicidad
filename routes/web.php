@@ -45,6 +45,10 @@ Route::get('mostrar/{id}',  [App\Http\Controllers\GeneralManager::class, 'show']
 
 Route::get('mostrar/logos/{id}',  [App\Http\Controllers\GeneralManager::class, 'show_logos'])->name('show.logos');
 Route::get('agregar/logo/{id}',  [App\Http\Controllers\GeneralManager::class, 'add_logo'])->name('add.logo');
+Route::get('editar/logo/{id}',  [App\Http\Controllers\GeneralManager::class, 'edit_logo'])->name('edit.logo');
+Route::post('editar/logo',  [App\Http\Controllers\GeneralManager::class, 'update_logo'])->name('update.logo');
+Route::get('eliminar/logo/{id}',  [App\Http\Controllers\GeneralManager::class, 'delete_logo'])->name('delete.logo');
+
 Route::post('registrar/logo',  [App\Http\Controllers\GeneralManager::class, 'store_logo'])->name('store.logo');
 Route::get('mostrar/comentarios_adm/{id}',  [App\Http\Controllers\GeneralManager::class, 'show_comments'])->name('show.comments_adm');
 Route::post('registrar/comentarios_adm',  [App\Http\Controllers\GeneralManager::class, 'store_comments_adm'])->name('store.comments_adm');
@@ -56,6 +60,7 @@ Route::post('registrar/planner',  [App\Http\Controllers\GeneralManager::class, '
 
 
 Route::get('mostrar_logos',  [App\Http\Controllers\GeneralManager::class, 'show_all_logos'])->name('show.all_logos');
+Route::get('mostrar_planners',  [App\Http\Controllers\GeneralManager::class, 'show_all_planners'])->name('show.all_planners');
 Route::get('mostrar_clientes',  [App\Http\Controllers\GeneralManager::class, 'show_all_customers'])->name('show.all_customers');
 
 Route::get('edit/customer/{id}',  [App\Http\Controllers\GeneralManager::class, 'edit_customer'])->name('edit.customer');
@@ -66,7 +71,8 @@ Route::post('registrar/cliente',  [App\Http\Controllers\GeneralManager::class, '
 Route::post('editar/cliente',  [App\Http\Controllers\GeneralManager::class, 'update_customer'])->name('update.customer');
 
 
-Route::get('/download/{file}',[App\Http\Controllers\GeneralManager::class, 'download']);
+Route::get('/download_logos/{file}',[App\Http\Controllers\GeneralManager::class, 'download_logos']);
+Route::get('/download_planners/{file}',[App\Http\Controllers\GeneralManager::class, 'download_planners']);
 
 
 
@@ -74,4 +80,11 @@ Route::resource('customers', App\Http\Controllers\CustomersController::class);
 
 Route::get('mostrar/comentarios/{id}',  [App\Http\Controllers\CustomersController::class, 'show_comments'])->name('show.comments');
 Route::get('mostrar_mis/logos/{id}',  [App\Http\Controllers\CustomersController::class, 'show_my_logos'])->name('show.my_logos');
+Route::get('mostrar_mis/planners/{id}',  [App\Http\Controllers\CustomersController::class, 'show_my_planners'])->name('show.my_planners');
+
 Route::post('registrar/comentarios',  [App\Http\Controllers\CustomersController::class, 'store_comments'])->name('store.comments');
+
+
+Route::get('/show_imagen_modal',  [App\Http\Controllers\CustomersController::class, 'show_imagen_modal'])->name('show_imagen_modal');
+
+Route::get('/show_planner_modal',  [App\Http\Controllers\CustomersController::class, 'show_planner_modal'])->name('show_planner_modal');

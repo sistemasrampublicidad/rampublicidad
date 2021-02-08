@@ -49,7 +49,7 @@
                         <li><a href="dashboard-add-listing.html"> Add Listing</a></li>
                         <li><a href="dashboard-bookings.html">  Bookings  </a></li>
                         <li><a href="dashboard-review.html"> Reviews </a></li>
-                        <li><a href="#">Log Out</a></li>
+                        <li><a href="#">Salida</a></li>
                     </ul>
                 </div>
                 <!-- lang-wrap-->
@@ -398,8 +398,10 @@
                                             </ul>
                                         </div>
                                         <!-- user-profile-menu end-->                                        
-                                        <button class="logout_btn color2-bg">Log Out <i class="fas fa-sign-out"></i></button>
-                                    </div>
+            <a href="{{ route('logout') }}" class="logout_btn color2-bg"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Cerrar sesión
+                            </a>                                    </div>
                                 </div>
                                 <a class="back-tofilters color2-bg custom-scroll-link fl-wrap" href="#dash_menu">Back to Menu<i class="fas fa-caret-up"></i></a>
                                 <div class="clearfix"></div>

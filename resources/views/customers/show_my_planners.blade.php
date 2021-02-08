@@ -24,8 +24,8 @@
                                     {{$customer['name']}}
                                 </h3>
                                 <ul class="no-list-style">
-                                    <li><a href="{{route('show.logos',$customer['id'])}}"><i class="fal fa-chart-line"></i>Logos</a></li>
-                                    <li><a href="{{route('show.planners',$customer['id'])}}"><i class="fal fa-rss"></i>Planners <span>7</span></a>
+                                    <li><a href="{{route('show.my_logos',auth()->user()->id)}}"><i class="fal fa-chart-line"></i>Mis Logos</a></li>
+                                    <li><a href="{{route('show.my_planners',auth()->user()->id)}}"><i class="fal fa-rss"></i>Planners <span>7</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -42,10 +42,9 @@
                 <!-- dashboard content-->
                 <div class="col-md-9">
                     <div class="dashboard-title   fl-wrap">
-                        <h3>Planners </h3>
+                        <h3> Mis Planners </h3>
                     </div>
                     <div class="dashboard-list-box  fl-wrap">
-
                         @foreach ($planners as $planner)
                         <div class="dashboard-list fl-wrap">
                             <div class="dashboard-message">
@@ -82,26 +81,14 @@
                         </div>
                     @endforeach
 
-                      
-
                     </div>
-                    <!-- dashboard-list-box end-->
-                    {{--                    <div class="pagination">--}}
-                    {{--                        <a href="#" class="prevposts-link"><i class="fas fa-caret-left"></i><span>Prev</span></a>--}}
-                    {{--                        <a href="#">1</a>--}}
-                    {{--                        <a href="#" class="current-page">2</a>--}}
-                    {{--                        <a href="#">3</a>--}}
-                    {{--                        <a href="#">...</a>--}}
-                    {{--                        <a href="#">7</a>--}}
-                    {{--                        <a href="#" class="nextposts-link"><span>Next</span><i class="fas fa-caret-right"></i></a>--}}
-                    {{--                    </div>--}}
                 </div>
-                <!-- dashboard content end-->
             </div>
         </section>
     </div>
     <!--content end-->
 </div>
+<!-- Modals -->
 <div class="main-register-wrap modal_view_planner">
     <div class="reg-overlay"></div>
     <div class="main-register-holder tabs-act">
