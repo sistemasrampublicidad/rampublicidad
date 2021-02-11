@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLogosTable extends Migration
+class CreateTypeLogo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateLogosTable extends Migration
      */
     public function up()
     {
-        Schema::create('logos', function (Blueprint $table) {
+        Schema::create('type_logo', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('path');
-            $table->string('status')->default('available');
-            $table->integer('type_id')->unsigned();
-            $table->integer('employee_id')->unsigned();
-            $table->foreign('employee_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('name');
+            $table->string('description');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -32,6 +28,6 @@ class CreateLogosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logos');
+        Schema::dropIfExists('type_logo');
     }
 }

@@ -25,7 +25,7 @@
                                 </h3>
                                 <ul class="no-list-style">
                                     <li><a href="{{route('show.my_logos',auth()->user()->id)}}"><i class="fal fa-chart-line"></i>Mis Logos</a></li>
-                                    <li><a href="{{route('show.my_planners',auth()->user()->id)}}"><i class="fal fa-rss"></i>Planners <span>7</span></a>
+                                    <li><a href="{{route('show.my_planners',auth()->user()->id)}}"><i class="fal fa-rss"></i>Mis Planners <span>7</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -54,11 +54,6 @@
                                     <a href="/download_planners/{{ $planner['path'] }}" class="color-bg tolt"
                                         data-microtip-position="left" data-tooltip="Descargar"><i
                                             class="fal fa-download"></i></a>
-                                    <a href="{{ route('show.logos', $customer['id']) }}" class="color-bg tolt"
-                                        data-microtip-position="left" data-tooltip="Editar"><i
-                                            class="fal fa-edit"></i></a>
-                                    <a href="#" class="red-bg tolt" data-microtip-position="left"
-                                        data-tooltip="Eliminar"><i class="fal fa-trash"></i></a>
                                 </div>
                                 <div class="dashboard-message-text">
                                     <div class="single-slider fl-wrap">

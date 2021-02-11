@@ -57,6 +57,9 @@ Route::get('mostrar/planners/{id}',  [App\Http\Controllers\GeneralManager::class
 Route::get('agregar/planner/{id}',  [App\Http\Controllers\GeneralManager::class, 'add_planner'])->name('add.planner');
 Route::post('registrar/planner',  [App\Http\Controllers\GeneralManager::class, 'store_planner'])->name('store.planner');
 
+Route::get('editar/planner/{id}',  [App\Http\Controllers\GeneralManager::class, 'edit_planner'])->name('edit.planner');
+Route::post('editar/planner',  [App\Http\Controllers\GeneralManager::class, 'update_planner'])->name('update.planner');
+Route::get('eliminar/planner/{id}',  [App\Http\Controllers\GeneralManager::class, 'delete_planner'])->name('delete.planner');
 
 
 Route::get('mostrar_logos',  [App\Http\Controllers\GeneralManager::class, 'show_all_logos'])->name('show.all_logos');

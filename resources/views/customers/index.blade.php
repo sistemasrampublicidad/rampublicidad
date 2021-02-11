@@ -20,7 +20,7 @@
                                 <h3>Contenido</h3>
                                 <ul class="no-list-style">
                                     <li><a href="{{route('show.my_logos',auth()->user()->id)}}"><i class="fal fa-chart-line"></i>Mis Logos</a></li>
-                                    <li><a href="{{route('show.my_planners',auth()->user()->id)}}"><i class="fal fa-rss"></i>Planners <span>7</span></a></li>
+                                    <li><a href="{{route('show.my_planners',auth()->user()->id)}}"><i class="fal fa-rss"></i>Mis Planners <span>7</span></a></li>
                                 </ul>
                             </div>
                             <a href="{{ route('logout') }}" class="logout_btn color2-bg"

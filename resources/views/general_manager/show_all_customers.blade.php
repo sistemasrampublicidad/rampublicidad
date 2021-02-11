@@ -20,6 +20,9 @@
                         <div class="user-profile-menu-wrap fl-wrap block_box">
                             <!-- user-profile-menu-->
                             <div class="user-profile-menu">
+                                <h3>
+                                    {{$customer['name']}}
+                                </h3>
                                 <ul class="no-list-style">
                                     <li><a href="{{route('show.all_logos')}}"><i class="fal fa-chart-line"></i>Todos mis Logos</a></li>
                                     <li><a href="{{route('show.all_planners')}}"><i class="fal fa-rss"></i>Todos mis Planners <span>7</span></a>

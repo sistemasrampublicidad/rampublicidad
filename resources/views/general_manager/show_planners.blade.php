@@ -34,7 +34,7 @@
                                 Cerrar sesión
                             </a>                        </div>
                     </div>
-                    <a class="back-tofilters color2-bg custom-scroll-link fl-wrap" href="{{route('customers.index')}}">Regresar al menú<i class="fas fa-caret-up"></i></a>
+                    <a class="back-tofilters color2-bg custom-scroll-link fl-wrap" href="{{route('show.all_customers')}}">Regresar al menú<i class="fas fa-caret-up"></i></a>
 
                     <div class="clearfix"></div>
                 </div>
@@ -43,6 +43,8 @@
                 <div class="col-md-9">
                     <div class="dashboard-title   fl-wrap">
                         <h3>Planners </h3>
+                        <a href="{{ route('add.planner', $customer['id']) }}" class=" brd-show-share color2-bg"
+                        data-tooltip="Agregar">Agregar planner<i class="fal fa-plus"></i></a>
                     </div>
                     <div class="dashboard-list-box  fl-wrap">
 
@@ -55,11 +57,11 @@
                                     <a href="/download_planners/{{ $planner['path'] }}" class="color-bg tolt"
                                         data-microtip-position="left" data-tooltip="Descargar"><i
                                             class="fal fa-download"></i></a>
-                                    <a href="{{ route('show.logos', $customer['id']) }}" class="color-bg tolt"
-                                        data-microtip-position="left" data-tooltip="Editar"><i
-                                            class="fal fa-edit"></i></a>
-                                    <a href="#" class="red-bg tolt" data-microtip-position="left"
-                                        data-tooltip="Eliminar"><i class="fal fa-trash"></i></a>
+                                            <a href="{{ route('edit.planner', $planner['planner_id']) }}" class="color-bg tolt"
+                                            data-microtip-position="left" data-tooltip="Editar"><i
+                                                class="fal fa-edit"></i></a>
+                                        <a href="{{ route('delete.planner', $planner['planner_id']) }}" class="red-bg tolt" data-microtip-position="left"
+                                            data-tooltip="Eliminar"><i class="fal fa-trash"></i></a>
                                 </div>
                                 <div class="dashboard-message-text">
                                     <div class="single-slider fl-wrap">

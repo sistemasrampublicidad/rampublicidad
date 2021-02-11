@@ -392,17 +392,21 @@ class GeneralManager extends Controller
 
     public function show_comments($id)
     {
-        $customer = User::where('id', '=', auth()->user()->id)->get()->toArray();
-        $customer = $customer[0];
+
+
+        
         $logo = Logos::find($id);
 
         $comments = Logos::join('comments_logos', 'logos.id', '=', 'comments_logos.logo_id')
             ->join('users', 'comments_logos.commentator_id', '=', 'users.id')
-            ->where('logos.id', '=', $id)
+            ->join('details_logo', 'details_logo.logo_id', '=', 'logos.id')
+            ->join('brandings', 'brandings.id', '=', 'details_logo.branding_id')
+            ->select('brandings.customer_id as customer','logos.*','comments_logos.*','users.*')
             ->get()
             ->toArray();
 
-        // dd($comments);
+            $customer = User::where('id', '=', $comments[0]['customer'])->get()->toArray();
+            $customer = $customer[0];
 
         return view('general_manager.show_comments', compact('customer', 'comments', 'logo'));
     }
@@ -436,6 +440,51 @@ class GeneralManager extends Controller
             ->toArray();
 
         return view('general_manager.show_all_planners', compact('customer', 'planners'));
+    }
+
+    public function edit_planner($id)
+    {
+        $planner = Planners::join('details_planners', 'details_planners.planner_id', '=', 'planners.id')
+            ->join('brandings', 'brandings.id', '=', 'details_planners.branding_id')
+            ->where('planners.id', '=', $id)
+            ->select('planners.*', 'planners.id as planner_id', 'details_planners.*', 'brandings.*')
+            ->get()
+            ->toArray();
+        $planner = $planner[0];
+
+        $customer = User::where('id', '=', $planner['customer_id'])->get()->toArray();
+        $customer = $customer[0];
+
+        return view('general_manager.edit_planner',  compact('customer', 'planner'));
+    }
+
+    public function update_planner(Request $request)
+    {
+        $planner = Planners::where('id', '=', $request->get('planner_id'))->get()->toArray();
+        $planner = $planner[0];
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $image->move('storage/administrator/uploads/planners/', $planner['path']);
+            $planner_update = Planners::where('planners.id', '=', $request->get('planner_id'))
+                ->join('details_planners', 'details_planners.planner_id', '=', 'planners.id')
+                ->update([
+                    'name' => $request->get('name'),
+                    'description' => $request->get('description'),
+                ]);
+        } else {
+            $planner_update = Planners::where('planners.id', '=', $request->get('planner_id'))
+                ->join('details_planners', 'details_planners.planner_id', '=', 'planners.id')
+                ->update([
+                    'name' => $request->get('name'),
+                    'description' => $request->get('description'),
+                ]);
+        }
+        return redirect(route('show.all_planners', $request->get('customer')));
+    }
+    public function delete_planner($id)
+    {
+        $planner = Planners::where('id', '=', $id)->delete();
+        return back()->with('success', 'Se eliminó el planner');
     }
 
 }

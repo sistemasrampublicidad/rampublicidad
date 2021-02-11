@@ -115,10 +115,10 @@
                                     {{ $customer['name'] }}
                                 </h3>
                                 <ul class="no-list-style">
-                                    <li><a href="{{route('show.my_logos',auth()->user()->id)}}"><i class="fal fa-chart-line"></i>Mis Logos</a></li>
+                                    <li><a href="{{route('show.my_logos',$customer['id'])}}"><i class="fal fa-chart-line"></i>Mis Logos</a></li>
 
                                     <li><a href="{{ route('show.planners', $customer['id']) }}"><i
-                                                class="fal fa-rss"></i>Planners <span>7</span></a>
+                                                class="fal fa-rss"></i>Mis Planners <span>7</span></a>
                                     </li>
                                 </ul>
                             </div>

@@ -51,15 +51,18 @@
                             <div class="dashboard-list fl-wrap">
                                 <div class="dashboard-message">
                                     <div class="booking-list-contr">
-                                        <a href="" class="color-bg tolt aaaa-open" data-microtip-position="left"
-                                            data-tooltip="Visualizar" data-tittle="{{$logo['logo_id']}}"><i class="fal fa-expand-arrows-alt"></i></a>
+                                                          <a href="" class="color-bg tolt aaaa-open" data-microtip-position="left"
+                                        data-tooltip="Visualizar" data-tittle="{{$logo['logo_id']}}"><i class="fal fa-expand-arrows-alt"></i></a>
                                         <a href="/download_logos/{{ $logo['path'] }}" class="color-bg tolt"
                                             data-microtip-position="left" data-tooltip="Descargar"><i
                                                 class="fal fa-download"></i></a>
-                                        <a href="{{ route('show.logos', $customer['id']) }}" class="color-bg tolt"
+                                        <a href="{{ route('show.comments_adm', $logo['logo_id']) }}" class="color-bg tolt"
+                                            data-microtip-position="left" data-tooltip="Comentar"><i
+                                                class="fal fa-comments"></i></a>
+                                        <a href="{{ route('edit.logo', $logo['logo_id']) }}" class="color-bg tolt"
                                             data-microtip-position="left" data-tooltip="Editar"><i
                                                 class="fal fa-edit"></i></a>
-                                        <a href="#" class="red-bg tolt" data-microtip-position="left"
+                                        <a href="{{ route('delete.logo', $logo['logo_id']) }}" class="red-bg tolt" data-microtip-position="left"
                                             data-tooltip="Eliminar"><i class="fal fa-trash"></i></a>
                                     </div>
                                     <div class="dashboard-message-text">

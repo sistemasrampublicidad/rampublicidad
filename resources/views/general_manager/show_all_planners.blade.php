@@ -56,11 +56,16 @@
                                         <a href="/download_planners/{{ $planner['path'] }}" class="color-bg tolt"
                                             data-microtip-position="left" data-tooltip="Descargar"><i
                                                 class="fal fa-download"></i></a>
-                                        <a href="{{ route('show.logos', $customer['id']) }}" class="color-bg tolt"
+{{-- 
+                                        <a href="{{ route('show.comments_adm', $logo['logo_id']) }}" class="color-bg tolt"
+                                            data-microtip-position="left" data-tooltip="Comentar"><i
+                                                class="fal fa-comments"></i></a> --}}
+                                        <a href="{{ route('edit.planner', $planner['planner_id']) }}" class="color-bg tolt"
                                             data-microtip-position="left" data-tooltip="Editar"><i
                                                 class="fal fa-edit"></i></a>
-                                        <a href="#" class="red-bg tolt" data-microtip-position="left"
+                                        <a href="{{ route('delete.planner', $planner['planner_id']) }}" class="red-bg tolt" data-microtip-position="left"
                                             data-tooltip="Eliminar"><i class="fal fa-trash"></i></a>
+                                                
                                     </div>
                                     <div class="dashboard-message-text">
                                         <div class="single-slider fl-wrap">
