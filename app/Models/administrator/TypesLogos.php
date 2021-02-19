@@ -5,14 +5,13 @@ namespace App\Models\administrator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Planners extends Model
+class TypesLogos extends Model
 {
     use HasFactory;
-    protected $table = 'planners';
+    protected $table = 'types_logo';
 
     protected $fillable = [
-        'path',
-        'employee_id',
-        'type_id'
+        'name',
+        'description'
     ];
 }

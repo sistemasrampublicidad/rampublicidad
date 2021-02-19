@@ -13,5 +13,11 @@ class DetailsPlanners extends Model
         'description',
         'planner_id',
         'branding_id',
+        'post_reason',
+        'platform',
+        'caption',
+        'extension',
+        'is_approved'
+
     ];
 }

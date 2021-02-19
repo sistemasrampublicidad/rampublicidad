@@ -30,6 +30,6 @@ class CreateTableMonths extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_months');
+        Schema::dropIfExists('months');
     }
 }

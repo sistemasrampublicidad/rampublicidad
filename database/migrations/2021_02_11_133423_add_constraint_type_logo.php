@@ -14,7 +14,7 @@ class AddConstraintTypeLogo extends Migration
     public function up()
     {
         Schema::table('logos', function (Blueprint $table) {
-            $table->foreign('type_id')->references('id')->on('type_logo')->onDelete('cascade');
+            $table->foreign('type_id')->references('id')->on('types_logo')->onDelete('cascade');
         });
     }
 
@@ -25,8 +25,5 @@ class AddConstraintTypeLogo extends Migration
      */
     public function down()
     {
-        Schema::table('create_logos_table', function (Blueprint $table) {
-            //
-        });
     }
 }

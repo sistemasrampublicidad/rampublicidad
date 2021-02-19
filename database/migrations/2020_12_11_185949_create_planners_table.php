@@ -16,6 +16,7 @@ class CreatePlannersTable extends Migration
         Schema::create('planners', function (Blueprint $table) {
             $table->increments('id');
             $table->string('path');
+            $table->integer('type_id')->unsigned();
             $table->string('status')->default('available');
             $table->integer('employee_id')->unsigned();
             $table->foreign('employee_id')->references('id')->on('users')->onDelete('cascade');

@@ -4029,7 +4029,7 @@ section.gray-section .section-separator {
     bottom: 0;
     right: 0;
     top:5%;
-	background: linear-gradient(to bottom, rgba(6,27,65,0) 0%,rgba(6,27,65,0.95) 100%);
+	/* background: linear-gradient(to bottom, rgba(6,27,65,0) 0%,rgba(6,27,65,0.95) 100%); */
     z-index: 2;
 	transition: all .2s ease-in-out;
 	border-radius:10px;
@@ -4201,7 +4201,7 @@ section.gray-section .section-separator {
 	bottom:0;
 	left:0;
 	right:0;
-	height:20px;
+	height:10px;
 	border-radius:15px 15px 0 0;
 	background:#fff;
 	z-index:3;
@@ -4228,7 +4228,7 @@ section.gray-section .section-separator {
 	bottom:0;
 	right:0;
 	top:30%;
-	background: linear-gradient(to bottom, rgba(6,27,65,0) 0%,rgba(6,27,65,0.95) 100%);
+	/* background: linear-gradient(to bottom, rgba(6,27,65,0) 0%,rgba(6,27,65,0.95) 100%); */
 	z-index:2;	
 }
 .listing_carditem_footer .listing-item-category-wrap span  , .listing_carditem .geodir-category-location a , .listing_carditem_footer .geodir-category_price .price-level-item strong  , .listing_carditem_footer .post-author a span{
@@ -4593,7 +4593,7 @@ section.gray-section .section-separator {
 	float:left;
     color: #7d93b2;
 	text-align:left;
-	font-size:12px;
+	font-size:16px;
 }
 .geodir-category-location a  i {
 	padding-right:6px;

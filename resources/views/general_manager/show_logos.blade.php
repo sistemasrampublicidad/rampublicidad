@@ -47,7 +47,7 @@
                     <div class="dashboard-title   fl-wrap">
                         <h3>Logos </h3>
                         <a href="{{ route('add.logo', $customer['id']) }}" class=" brd-show-share color2-bg"
-                            data-tooltip="Agregar">Agregar logo<i class="fal fa-plus"></i></a>
+                            data-tooltip="Agregar">Agregar Identidad<i class="fal fa-plus"></i></a>
                     </div>
                     <div class="dashboard-list-box  fl-wrap">
                         @foreach ($logos as $logo)
@@ -68,6 +68,7 @@
                                         <a href="{{ route('delete.logo', $logo['logo_id']) }}" class="red-bg tolt" data-microtip-position="left"
                                             data-tooltip="Eliminar"><i class="fal fa-trash"></i></a>
                                     </div>
+                                    @if($logo['type_id'] == 1)
                                     <div class="dashboard-message-text">
                                         <div class="single-slider fl-wrap">
                                             <div class="swiper-container-horizontal swiper-container-autoheight">
@@ -87,6 +88,30 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @else
+
+                                    <div class="dashboard-message-text">
+                                        <div class="single-slider fl-wrap">
+                                            <div class="swiper-container-horizontal swiper-container-autoheight">
+                                                <div class="swiper-wrapper lightgallery">
+                                                    <div class="swiper-slide hov_zoom swiper-slide-active"
+                                                        data-swiper-slide-index="0">
+                                                        {{-- <img src="{{ asset('/storage/administrator/uploads/logos/' . $logo['path']) }}"
+                                                            alt=""> --}}
+                                                        <h4><a href="listing-single.html">{{ $logo['name'] }}</a></h4>
+                                                        <div class="geodir-category-location clearfix"><a href="#">
+                                                                {{ $logo['description'] }}<br>{{ $logo['created_at'] }}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <span class="swiper-notification" aria-live="assertive"
+                                                    aria-atomic="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+
+
                                 </div>
                             </div>
                         @endforeach

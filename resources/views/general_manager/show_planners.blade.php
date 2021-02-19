@@ -40,13 +40,26 @@
                 </div>
                 <!-- dashboard-menu  end-->
                 <!-- dashboard content-->
+              
                 <div class="col-md-9">
-                    <div class="dashboard-title   fl-wrap">
-                        <h3>Planners </h3>
-                        <a href="{{ route('add.planner', $customer['id']) }}" class=" brd-show-share color2-bg"
-                        data-tooltip="Agregar">Agregar planner<i class="fal fa-plus"></i></a>
-                    </div>
+                 
                     <div class="dashboard-list-box  fl-wrap">
+                    <div class="dashboard-title fl-wrap">
+                        <h3>Planners </h3>
+                        <a href="{{ route('add.posts', $customer['id']) }}" class=" brd-show-share color2-bg"
+                        data-tooltip="Agregar">Agregar planner<i class="fal fa-plus"></i></a>
+                        <div class="box-widget-item fl-wrap">
+                            <div class="banner-wdget fl-wrap">
+                                <div class="overlay"></div>
+                                <div class="banner-wdget-content fl-wrap">
+                                    <h4>Still need help in filling out the form  ? Visit our help page. </h4>
+                                    <a href="{{ route('show.planners.posts', $customer['id']) }}" class="color-bg"> Ver posts</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
 
                         @foreach ($planners as $planner)
                         <div class="dashboard-list fl-wrap">

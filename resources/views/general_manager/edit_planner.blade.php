@@ -42,7 +42,7 @@
                 <!-- dashboard content-->
                 <div class="col-md-9">
                     <div class="dashboard-title   fl-wrap">
-                        <h3>Agregar Planner </h3>
+                        <h3>Editar Planner </h3>
                     </div>
                     <form method="POST" action="{{ route('update.planner') }}" accept-charset="UTF-8"
                           enctype="multipart/form-data" >

@@ -8,6 +8,8 @@ use App\Models\administrator\DetailsLogos;
 use App\Models\administrator\DetailsPlanners;
 use App\Models\administrator\Logos;
 use App\Models\administrator\Planners;
+use App\Models\administrator\TypesLogos;
+use App\Models\administrator\TypesPlanners;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -96,7 +98,9 @@ class GeneralManager extends Controller
     {
         $customer = User::where('id', '=', $id)->get()->toArray();
         $customer = $customer[0];
-        return view('general_manager.add_logo', compact('customer'));
+        $types = TypesLogos::all();
+
+        return view('general_manager.add_logo', compact('customer','types'));
     }
 
 
@@ -130,6 +134,7 @@ class GeneralManager extends Controller
 
             $logo_save = new logos([
                 'employee_id' => $request->get('employee'),
+                'type_id' => $request->get('type_logo'),
                 'path' =>  $filename,
             ]);
             $logo_save->save();
@@ -147,6 +152,7 @@ class GeneralManager extends Controller
         } else {
             $logo_save = new logos([
                 'employee_id' => $request->get('employee'),
+                'type_id' => $request->get('type_logo'),
                 'path' => $filename,
             ]);
             $logo_save->save();
@@ -170,15 +176,58 @@ class GeneralManager extends Controller
         $planners = Planners::join('details_planners', 'details_planners.planner_id', '=', 'planners.id')
             ->join('brandings', 'brandings.id', '=', 'details_planners.branding_id')
             ->where('customer_id', '=', $id)
+                        ->where('planners.type_id', '<>', '3')
+
             ->get()
             ->toArray();
         return view('general_manager.show_planners', compact('customer', 'planners'));
     }
 
-    public function add_planner($id)
+    public function show_planners_posts($id)
     {
         $customer = User::where('id', '=', $id)->first();
-        return view('general_manager.add_planner', compact('customer'));
+        $planners = Planners::join('details_planners', 'details_planners.planner_id', '=', 'planners.id')
+            ->join('brandings', 'brandings.id', '=', 'details_planners.branding_id')
+            ->where('customer_id', '=', $id)
+            ->where('type_id','3')
+            ->get()
+            ->toArray();
+        
+        return view('general_manager.show_planners_posts', compact('customer', 'planners'));
+    }
+    
+    public function show_my_planners_posts($id)
+    {
+        $customer = User::where('id', '=', $id)->first();
+        $planners = Planners::join('details_planners', 'details_planners.planner_id', '=', 'planners.id')
+            ->join('brandings', 'brandings.id', '=', 'details_planners.branding_id')
+            ->where('customer_id', '=', $id)
+            ->where('type_id','3')
+            ->get()
+            ->toArray();
+        
+        return view('general_manager.show_my_planners_posts', compact('customer', 'planners'));
+    }
+
+    
+    public function add_posts($id)
+    {
+        $customer = User::where('id', '=', $id)->first();
+        return view('general_manager.add_posts', compact('customer'));
+    }
+
+    public function add_calendar($id)
+    {
+        $customer = User::where('id', '=', $id)->first();
+        $types = TypesPlanners::all();
+        return view('general_manager.add_planner', compact('customer','types'));
+    }
+
+    public function add_publicity($id)
+    {
+        $customer = User::where('id', '=', $id)->first();
+        $types = TypesPlanners::all();
+        return view('general_manager.add_planner', compact('customer','types'));
     }
     public function store_planner(Request $request)
     {
@@ -205,13 +254,20 @@ class GeneralManager extends Controller
 
             $planner_save = new Planners([
                 'employee_id' => $request->get('employee'),
+                'type_id' => $request->get('type'),
                 'path' => $filename,
+                'created_at' => $request->get('datepicker-here-time'),
             ]);
             $planner_save->save();
 
             $details_planner = new DetailsPlanners([
                 'name' => $request->get('name'),
                 'description' => $request->get('description'),
+                'post_reason' => $request->get('post_reason'),
+                'platform' => $request->get('platform'),
+                'caption' => $request->get('caption'),
+                'extension' => $extension,
+
                 'planner_id' => $planner_save['id'],
                 'branding_id' => $branding_save['id'],
             ]);
@@ -222,7 +278,10 @@ class GeneralManager extends Controller
         } else {
             $planner_save = new Planners([
                 'employee_id' => $request->get('employee'),
+                'type_id' => $request->get('type'),
                 'path' => $filename,
+                'created_at' => $request->get('datepicker-here-time'),
+
             ]);
             $planner_save->save();
 
@@ -230,7 +289,12 @@ class GeneralManager extends Controller
                 'planner_id' => $planner_save['id'],
                 'branding_id' => $exist_branding[0]['id'],
                 'name' => $request->get('name'),
-                'description' => $request->get('description')
+                'description' => $request->get('description'),
+                'post_reason' => $request->get('post_reason'),
+                'platform' => $request->get('platform'),
+                'caption' => $request->get('caption'),
+                'extension' => $extension,
+
             ]);
 
 
@@ -397,6 +461,12 @@ class GeneralManager extends Controller
         
         $logo = Logos::find($id);
 
+        $logo_show = Logos::join('details_logo', 'details_logo.logo_id', '=', 'logos.id')
+        ->join('brandings', 'brandings.id', '=', 'details_logo.branding_id')
+        ->where('logos.id', '=', $id)
+        ->get()
+        ->toArray();
+
         $comments = Logos::join('comments_logos', 'logos.id', '=', 'comments_logos.logo_id')
             ->join('users', 'comments_logos.commentator_id', '=', 'users.id')
             ->join('details_logo', 'details_logo.logo_id', '=', 'logos.id')
@@ -405,7 +475,7 @@ class GeneralManager extends Controller
             ->get()
             ->toArray();
 
-            $customer = User::where('id', '=', $comments[0]['customer'])->get()->toArray();
+            $customer = User::where('id', '=', $logo_show[0]['customer_id'])->get()->toArray();
             $customer = $customer[0];
 
         return view('general_manager.show_comments', compact('customer', 'comments', 'logo'));
@@ -457,7 +527,21 @@ class GeneralManager extends Controller
 
         return view('general_manager.edit_planner',  compact('customer', 'planner'));
     }
+    public function edit_post($id)
+    {
+        $planner = Planners::join('details_planners', 'details_planners.planner_id', '=', 'planners.id')
+            ->join('brandings', 'brandings.id', '=', 'details_planners.branding_id')
+            ->where('planners.id', '=', $id)
+            ->select('planners.*', 'planners.id as planner_id', 'details_planners.*', 'brandings.*')
+            ->get()
+            ->toArray();
+        $planner = $planner[0];
 
+        $customer = User::where('id', '=', $planner['customer_id'])->get()->toArray();
+        $customer = $customer[0];
+
+        return view('general_manager.edit_post',  compact('customer', 'planner'));
+    }
     public function update_planner(Request $request)
     {
         $planner = Planners::where('id', '=', $request->get('planner_id'))->get()->toArray();
@@ -481,6 +565,34 @@ class GeneralManager extends Controller
         }
         return redirect(route('show.all_planners', $request->get('customer')));
     }
+    public function update_post(Request $request)
+    {
+
+        $planner = Planners::where('id', '=', $request->get('post_id'))->get()->toArray();
+        $planner = $planner[0];
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $image->move('storage/administrator/uploads/planners/', $planner['path']);
+            $planner_update = Planners::where('planners.id', '=', $request->get('post_id'))
+                ->join('details_planners', 'details_planners.planner_id', '=', 'planners.id')
+                ->update([
+                    'platform' => $request->get('platform'),
+                    'post_reason' => $request->get('post_reason'),
+                    'caption' => $request->get('caption'),
+                ]);
+        } else {
+            $planner_update = Planners::where('planners.id', '=', $request->get('post_id'))
+                ->join('details_planners', 'details_planners.planner_id', '=', 'planners.id')
+                ->update([
+                    'platform' => $request->get('platform'),
+                    'post_reason' => $request->get('post_reason'),
+                    'caption' => $request->get('caption'),
+                ]);
+        }
+        return redirect(route('show.planners.posts', $request->get('customer')));
+    }
+
+
     public function delete_planner($id)
     {
         $planner = Planners::where('id', '=', $id)->delete();

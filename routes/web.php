@@ -54,12 +54,21 @@ Route::get('mostrar/comentarios_adm/{id}',  [App\Http\Controllers\GeneralManager
 Route::post('registrar/comentarios_adm',  [App\Http\Controllers\GeneralManager::class, 'store_comments_adm'])->name('store.comments_adm');
 
 Route::get('mostrar/planners/{id}',  [App\Http\Controllers\GeneralManager::class, 'show_planners'])->name('show.planners');
-Route::get('agregar/planner/{id}',  [App\Http\Controllers\GeneralManager::class, 'add_planner'])->name('add.planner');
+
+Route::get('mostrar/planners_posts/{id}',  [App\Http\Controllers\GeneralManager::class, 'show_planners_posts'])->name('show.planners.posts');
+
+
+Route::get('mostrar/mis_planners_posts/{id}',  [App\Http\Controllers\GeneralManager::class, 'show_my_planners_posts'])->name('show.my.planners.posts');
+
+
+Route::get('agregar/post/{id}',  [App\Http\Controllers\GeneralManager::class, 'add_posts'])->name('add.posts');
 Route::post('registrar/planner',  [App\Http\Controllers\GeneralManager::class, 'store_planner'])->name('store.planner');
 
 Route::get('editar/planner/{id}',  [App\Http\Controllers\GeneralManager::class, 'edit_planner'])->name('edit.planner');
 Route::post('editar/planner',  [App\Http\Controllers\GeneralManager::class, 'update_planner'])->name('update.planner');
 Route::get('eliminar/planner/{id}',  [App\Http\Controllers\GeneralManager::class, 'delete_planner'])->name('delete.planner');
+Route::get('editar/post/{id}',  [App\Http\Controllers\GeneralManager::class, 'edit_post'])->name('edit.post');
+Route::post('editar/post',  [App\Http\Controllers\GeneralManager::class, 'update_post'])->name('update.post');
 
 
 Route::get('mostrar_logos',  [App\Http\Controllers\GeneralManager::class, 'show_all_logos'])->name('show.all_logos');

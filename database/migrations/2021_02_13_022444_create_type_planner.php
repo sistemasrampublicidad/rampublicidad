@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypeLogo extends Migration
+class CreateTypePlanner extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateTypeLogo extends Migration
      */
     public function up()
     {
-        Schema::create('types_logo', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('description')->nullable();
-            $table->timestamps();
-        });
+            Schema::create('types_planner', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->string('description')->nullable();
+                $table->timestamps();
+            });
     }
 
     /**
@@ -28,6 +28,6 @@ class CreateTypeLogo extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types_logo');
+        Schema::dropIfExists('types_planner');
     }
 }

@@ -13,5 +13,6 @@ class Logos extends Model
     protected $fillable = [
         'path',
         'employee_id',
+        'type_id'
     ];
 }

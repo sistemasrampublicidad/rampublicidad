@@ -34,6 +34,7 @@ class CustomersController extends Controller
         $planners = Planners::join('details_planners', 'details_planners.planner_id', '=', 'planners.id')
             ->join('brandings', 'brandings.id', '=', 'details_planners.branding_id')
             ->where('brandings.customer_id', '=', $id)
+            ->where('planners.type_id', '<>', '3')
             ->select('planners.*','planners.id as planner_id','details_planners.*','brandings.*')
             ->get()
             ->toArray();

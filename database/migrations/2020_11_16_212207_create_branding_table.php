@@ -28,6 +28,6 @@ class CreateBrandingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branding');
+        Schema::dropIfExists('brandings');
     }
 }

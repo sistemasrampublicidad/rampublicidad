@@ -24,8 +24,10 @@
                                     {{$customer['name']}}
                                 </h3>
                                 <ul class="no-list-style">
-                                    <li><a href="{{route('show.my_logos',auth()->user()->id)}}"><i class="fal fa-chart-line"></i>Mis Logos</a></li>
-                                    <li><a href="{{route('show.my_planners',auth()->user()->id)}}"><i class="fal fa-rss"></i>Mis Planners <span>7</span></a>
+                                    <li><a href="{{route('show.my_logos',$customer['id'])}}"><i class="fal fa-chart-line"></i>Mis Logos</a></li>
+
+                                    <li><a href="{{ route('show.my_planners', $customer['id']) }}"><i
+                                                class="fal fa-rss"></i>Mis Planners <span>7</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -41,42 +43,63 @@
                 <!-- dashboard-menu  end-->
                 <!-- dashboard content-->
                 <div class="col-md-9">
-                    <div class="dashboard-title   fl-wrap">
-                        <h3> Mis Planners </h3>
-                    </div>
                     <div class="dashboard-list-box  fl-wrap">
-                        @foreach ($planners as $planner)
-                        <div class="dashboard-list fl-wrap">
-                            <div class="dashboard-message">
-                                <div class="booking-list-contr">
-                                    <a href="" class="color-bg tolt aaaa-open-planner" data-microtip-position="left"
-                                        data-tooltip="Visualizar" data-tittle="{{$planner['planner_id']}}"><i class="fal fa-expand-arrows-alt"></i></a>
-                                    <a href="/download_planners/{{ $planner['path'] }}" class="color-bg tolt"
-                                        data-microtip-position="left" data-tooltip="Descargar"><i
-                                            class="fal fa-download"></i></a>
+                        <div class="dashboard-title fl-wrap">
+                            <h3>Mis Planners </h3>
+                            {{-- <a href="{{ route('add.posts', $customer['id']) }}" class=" brd-show-share color2-bg"
+                            data-tooltip="Agregar">Agregar planner<i class="fal fa-plus"></i></a> --}}
+                            <div class="box-widget-item fl-wrap">
+                                <div class="banner-wdget fl-wrap">
+                                    <div class="overlay"></div>
+                                    <div class="banner-wdget-content fl-wrap">
+                                        <h4>Still need help in filling out the form  ? Visit our help page. </h4>
+                                        <a href="{{ route('show.my.planners.posts', $customer['id']) }}" class="color-bg"> Ver posts</a>
+                                    </div>
                                 </div>
-                                <div class="dashboard-message-text">
-                                    <div class="single-slider fl-wrap">
-                                        <div class="swiper-container-horizontal swiper-container-autoheight">
-                                            <div class="swiper-wrapper lightgallery">
-                                                <div class="swiper-slide hov_zoom swiper-slide-active"
-                                                    data-swiper-slide-index="0">
-                                                    <h4><a href="listing-single.html">{{ $planner['name'] }}</a></h4>
-                                                    <div class="geodir-category-location clearfix"><a href="#">
-                                                            {{ $planner['description'] }}<br>{{ $planner['created_at'] }}</a>
+                            </div>
+                            
+                        </div>
+    
+    
+                            @foreach ($planners as $planner)
+                            <div class="dashboard-list fl-wrap">
+                                <div class="dashboard-message">
+                                    <div class="booking-list-contr">
+                                        <a href="" class="color-bg tolt aaaa-open-planner" data-microtip-position="left"
+                                            data-tooltip="Visualizar" data-tittle="{{$planner['planner_id']}}"><i class="fal fa-expand-arrows-alt"></i></a>
+                                        <a href="/download_planners/{{ $planner['path'] }}" class="color-bg tolt"
+                                            data-microtip-position="left" data-tooltip="Descargar"><i
+                                                class="fal fa-download"></i></a>
+                                                <a href="{{ route('edit.planner', $planner['planner_id']) }}" class="color-bg tolt"
+                                                data-microtip-position="left" data-tooltip="Editar"><i
+                                                    class="fal fa-edit"></i></a>
+                                            <a href="{{ route('delete.planner', $planner['planner_id']) }}" class="red-bg tolt" data-microtip-position="left"
+                                                data-tooltip="Eliminar"><i class="fal fa-trash"></i></a>
+                                    </div>
+                                    <div class="dashboard-message-text">
+                                        <div class="single-slider fl-wrap">
+                                            <div class="swiper-container-horizontal swiper-container-autoheight">
+                                                <div class="swiper-wrapper lightgallery">
+                                                    <div class="swiper-slide hov_zoom swiper-slide-active"
+                                                        data-swiper-slide-index="0">
+                                                        <h4><a href="listing-single.html">{{ $planner['name'] }}</a></h4>
+                                                        <div class="geodir-category-location clearfix"><a href="#">
+                                                                {{ $planner['description'] }}<br>{{ $planner['created_at'] }}</a>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <span class="swiper-notification" aria-live="assertive"
+                                                    aria-atomic="true"></span>
                                             </div>
-                                            <span class="swiper-notification" aria-live="assertive"
-                                                aria-atomic="true"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        @endforeach
+    
+                          
+    
                         </div>
-                    @endforeach
-
-                    </div>
                 </div>
             </div>
         </section>
