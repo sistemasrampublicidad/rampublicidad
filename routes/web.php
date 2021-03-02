@@ -68,6 +68,7 @@ Route::get('editar/planner/{id}',  [App\Http\Controllers\GeneralManager::class, 
 Route::post('editar/planner',  [App\Http\Controllers\GeneralManager::class, 'update_planner'])->name('update.planner');
 Route::get('eliminar/planner/{id}',  [App\Http\Controllers\GeneralManager::class, 'delete_planner'])->name('delete.planner');
 Route::get('editar/post/{id}',  [App\Http\Controllers\GeneralManager::class, 'edit_post'])->name('edit.post');
+Route::get('approbar/post/{id}',  [App\Http\Controllers\GeneralManager::class, 'approved_post'])->name('approved.post');
 Route::post('editar/post',  [App\Http\Controllers\GeneralManager::class, 'update_post'])->name('update.post');
 
 
@@ -90,9 +91,11 @@ Route::get('/download_planners/{file}',[App\Http\Controllers\GeneralManager::cla
 
 Route::resource('customers', App\Http\Controllers\CustomersController::class);
 
-Route::get('mostrar/comentarios/{id}',  [App\Http\Controllers\CustomersController::class, 'show_comments'])->name('show.comments');
+Route::get('mostrar/comentarios/{id}',  [App\Http\Controllers\CustomersController::class, 'show_comments'])->name('show.my.comments');
+
 Route::get('mostrar_mis/logos/{id}',  [App\Http\Controllers\CustomersController::class, 'show_my_logos'])->name('show.my_logos');
 Route::get('mostrar_mis/planners/{id}',  [App\Http\Controllers\CustomersController::class, 'show_my_planners'])->name('show.my_planners');
+Route::post('registrar/comentarios/post',  [App\Http\Controllers\CustomersController::class, 'store_my_comments_post'])->name('store.my.comments.post');
 
 Route::post('registrar/comentarios',  [App\Http\Controllers\CustomersController::class, 'store_comments'])->name('store.comments');
 
@@ -100,3 +103,15 @@ Route::post('registrar/comentarios',  [App\Http\Controllers\CustomersController:
 Route::get('/show_imagen_modal',  [App\Http\Controllers\CustomersController::class, 'show_imagen_modal'])->name('show_imagen_modal');
 
 Route::get('/show_planner_modal',  [App\Http\Controllers\CustomersController::class, 'show_planner_modal'])->name('show_planner_modal');
+
+
+
+
+Route::get('/show_my_calendar',  [App\Http\Controllers\GeneralManager::class, 'show_my_calendar']);
+
+
+
+
+
+
+

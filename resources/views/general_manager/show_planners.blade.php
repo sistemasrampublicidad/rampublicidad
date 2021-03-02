@@ -121,7 +121,7 @@
     <div class="reg-overlay"></div>
     <div class="main-register-holder tabs-act">
         <div class="main-register fl-wrap  modal_view_planner_main">
-            <div class="main-register_title">Documento <span><strong></strong></span></div>
+            <div class="main-register_title">Planner <span><strong></strong></span></div>
             <div class="close-reg"><i class="fal fa-times"></i></div>
             <div class="tabs-container">
                 <div class="soc-log fl-wrap">

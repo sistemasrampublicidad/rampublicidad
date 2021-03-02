@@ -1508,7 +1508,7 @@ section.gray-section .section-separator {
 }
 .main-search-input-item {
 	float:left;
-	width:33.3%;
+	/* width:33.3%; */
 	box-sizing:border-box;
 	border-right:1px solid #eee;
 	height:50px;
@@ -1688,6 +1688,18 @@ section.gray-section .section-separator {
 	width:100%;
 	position:relative;
 	padding:80px 0 20px;
+	margin-bottom:50px;
+    background: #fff;
+	border-radius:6px;
+	overflow:hidden;
+	box-shadow: 0px 0px 0px 7px rgba(255,255,255,0.1);
+}
+
+.main-register2 {
+	float:left;
+	width:100%;
+	position:relative;
+	padding:20px 0 20px;
 	margin-bottom:50px;
     background: #fff;
 	border-radius:6px;

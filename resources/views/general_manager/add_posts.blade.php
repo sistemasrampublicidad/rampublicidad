@@ -47,7 +47,7 @@
                     <div class="faq-section fl-wrap" id="fq1">
                         <!-- accordion-->
                         <div class="accordion">
-                            <a class="toggle act-accordion" href="#">Calendario<span></span></a>
+                            <!-- <a class="toggle act-accordion" href="#">Calendario<span></span></a>
                             <div class="accordion-inner visible">
                                 <form method="POST" action="{{ route('store.planner') }}" accept-charset="UTF-8"
                                 enctype="multipart/form-data" >
@@ -86,7 +86,7 @@
                                   </div>
                               </div>
                           </form>
-                            </div>
+                            </div> -->
                             <a class="toggle" href="#">Pauta publicitaria <span></span></a>
                             <div class="accordion-inner">
                                 <form method="POST" action="{{ route('store.planner') }}" accept-charset="UTF-8"
@@ -149,13 +149,19 @@
                                                      value="">
                                           </div>
                                           <div class="col-md-6">
+                                            <label>Idea <span>*</span> </label>
+                                            <input type="text" placeholder="Escriba el nombre" name="idea" onClick="this.select()"
+                                                   value="">
+                                        </div>
+                                          <div class="col-md-6">
                                               <label>Plataforma <span>*</span> </label>
                                               <input type="text" placeholder="Escriba el nombre" name="platform" onClick="this.select()"
                                                      value="">
                                           </div>
 
-                                          <div class="col-md-12">
-                                            <div class="main-search-input-item clact date-container">
+                                          <div class="col-md-6">
+                                            <label>Fecha <span>*</span> </label>
+                                            <div class="main-search-input-item  date-container">
                                                 <span class="iconn-dec"><i class="fal fa-calendar"></i></span>
                                                 <input type="text" placeholder="Date and Time"     name="datepicker-here-time"   value=""/>
                                                 <span class="clear-singleinput"><i class="fal fa-times"></i></span>

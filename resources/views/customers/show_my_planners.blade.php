@@ -46,8 +46,9 @@
                     <div class="dashboard-list-box  fl-wrap">
                         <div class="dashboard-title fl-wrap">
                             <h3>Mis Planners </h3>
-                            {{-- <a href="{{ route('add.posts', $customer['id']) }}" class=" brd-show-share color2-bg"
-                            data-tooltip="Agregar">Agregar planner<i class="fal fa-plus"></i></a> --}}
+                            <input id="id_customer" type="text" value="{{$customer['id']}}" >
+                            <div class="log-separator fl-wrap"><span></span></div>
+
                             <div class="box-widget-item fl-wrap">
                                 <div class="banner-wdget fl-wrap">
                                     <div class="overlay"></div>
@@ -96,8 +97,26 @@
                                 </div>
                             </div>
                         @endforeach
-    
-                          
+                        <div class="faq-section fl-wrap" id="fq1">
+                            <!-- accordion-->
+                            <div class="accordion">
+                                <a class="toggle act-accordion" href="#">Calendario<span></span></a>
+                                <div class="accordion-inner visible" style="display: none;">
+                                    <div class="single-slider fl-wrap">
+
+                                    <img  width="100%" height="50px" src="{{ asset('/storage/administrator/uploads/avatars/' . auth()->user()->avatar) }}"
+                                    alt="">
+                                </div>
+                                <span class="section-separator"></span>
+
+                                    <div id="calendar"></div>
+                                </div>
+                            </div>
+                            <!-- accordion end -->                                               
+                        </div>
+                        
+
+
     
                         </div>
                 </div>
@@ -110,20 +129,20 @@
 <div class="main-register-wrap modal_view_planner">
     <div class="reg-overlay"></div>
     <div class="main-register-holder tabs-act">
-        <div class="main-register fl-wrap  modal_view_planner_main">
-            <div class="main-register_title">Documento <span><strong></strong></span></div>
+        <div class="main-register2 fl-wrap  modal_view_planner_main">
+            <div id="date_event" class="main-register_title">Planner <span><strong></strong></span></div>
             <div class="close-reg"><i class="fal fa-times"></i></div>
             <div class="tabs-container">
-                <div class="soc-log fl-wrap">
-                    <div class="img_logo fl-wrap"><span></span></div>
-                </div>
-                <div class="wave-bg">
-                    <div class='wave -one'></div>
-                    <div class='wave -two'></div>
-                </div>
+                    {{-- <div class="img_logo fl-wrap"><span></span></div> --}}
+                    {{-- <div id="calendar"></div> --}}
+
             </div>
         </div>
     </div>
 </div>
+<script>
 
+
+
+</script>
 @include('layouts.footer')

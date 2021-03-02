@@ -1,5 +1,9 @@
 @include('layouts.header')
 
+<?php
+
+
+?>
 <div id="wrapper">
     <!-- content-->
     <div class="content">
@@ -44,6 +48,7 @@
                 <!-- dashboard content-->
               
                 <div class="col-md-9">
+             
                     <div class="listing-item-container init-grid-items fl-wrap nocolumn-lic">
                         @foreach($planners as $planner)
 
@@ -52,14 +57,13 @@
                                 <div class="geodir-category-img">
                                     @if($planner['is_approved'] == 'no')
 
-                                    <a href="{{ route('edit.post', $planner['planner_id']) }}">
+                                    <a href="{{ route('approved.post', $planner['planner_id']) }}">
                                         <div class="geodir-js-favorite_btn"><i class="fal fa-check"></i><span>Aprobar</span></div>
                                     </a>
                                     @endif
-                                    <a href="listing-single.html" class="geodir-category-img-wrap fl-wrap">
+                                    <a href="{{ asset('/storage/administrator/uploads/planners/'.$planner['path']) }}" target="_blank" class="geodir-category-img-wrap fl-wrap">
                                         <img src="{{ asset('/storage/administrator/uploads/planners/'.$planner['path']) }}" alt="">
-
-                                </a>
+                                    </a>
                                 @if($planner['is_approved'] == 'yes')
                                 <div class="geodir_status_date gsd_close"><i class="fal fa-lock"></i>Aprobado</div>
                                 @else
@@ -67,14 +71,14 @@
                                 @endif
                                 </div>
                                 <div class="geodir-category-content fl-wrap title-sin_item">
-                                    <div class="geodir-category-content-title fl-wrap">
+                                    {{-- <div class="geodir-category-content-title fl-wrap">
                                         <div class="geodir-category-content-title-item">
                                             <h3 class="title-sin_map"><a href="listing-single.html">{{$planner['post_reason']}}</a><span class="verified-badge"><i class="fal fa-check"></i></span></h3>
                                             <div class="geodir-category-location fl-wrap"><a href="#" ><i class="fas fa-calendar-day"></i>Fecha: {{$planner['created_at']}}</a></div>
                                             <div class="geodir-category-location fl-wrap"><a href="#" ><i class="fab fa-{{$planner['platform']}}"></i>Plataforma: {{$planner['platform']}}</a></div>
                                             <div class="geodir-category-location fl-wrap"><a href="#" ><i class="fas fa-share-alt"></i>Extensión: {{$planner['extension']}}</a></div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="geodir-category-text fl-wrap">
                                         <p class="small-text">{!!$planner['caption']!!}</p>
                                         <div class="facilities-list fl-wrap">
@@ -88,14 +92,39 @@
                                         </div>
                                     </div>
                                     <div class="geodir-category-footer fl-wrap">
+                                        @empty(!$comments)
+                                        <div class="chat-box-2 fl-wrap">
+                                            @foreach ($comments as $comment)
+                                                <div class="chat-message {{ $comment['type'] }} fl-wrap">
+                                                    <div class="dashboard-message-avatar">
+                                                        <img src="{{ asset('/storage/administrator/uploads/avatars/' . $comment['avatar']) }}"
+                                                            alt="">
+                                                                    <h3 class="title-sin_map"><a href="listing-single.html">{{$planner['post_reason']}}</a><span class="verified-badge"><i class="fal fa-check"></i></span></h3>
+                                                                    <div class="geodir-category-location fl-wrap"><a href="#" ><i class="fas fa-calendar-day"></i>Fecha: {{$planner['created_at']}}</a></div>
+                                                                    <div class="geodir-category-location fl-wrap"><a href="#" ><i class="fab fa-{{$planner['platform']}}"></i>Plataforma: {{$planner['platform']}}</a></div>
+                                                                    <div class="geodir-category-location fl-wrap"><a href="#" ><i class="fas fa-share-alt"></i>Extensión: {{$planner['extension']}}</a></div>
+                                                        <span
+                                                            class="chat-message-user-name cmun_sm">{{ $comment['name'] }}</span>
+                                                    </div>
+                                                    <span class="massage-date">{{ $comment['created_at'] }}</span>
+                                                    <p>{{ $comment['comment'] }}</p>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endempty
+                                        <form method="POST" action="{{ route('store.my.comments.post') }}"
+                                        accept-charset="UTF-8" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="chat-widget_input fl-wrap">
-                                            {{-- <input type="hidden" name="id_logo" value="{{ $logo['id'] }}"> --}}
+                                            <input type="hidden" name="id_logo" value="{{ $planner['planner_id'] }}">
                                             <input type="hidden" name="type" value="chat-message_guest">
                                             <textarea name="comment" placeholder="Escriba un comentario"
                                                 required></textarea>
                                             <button type="submit"><i class="fal fa-paper-plane"></i></button>
                                         </div>
+                                    </form>
                                     </div>
+                                    
                                 </div>
                             </article>
                         </div>
@@ -113,7 +142,7 @@
     <div class="reg-overlay"></div>
     <div class="main-register-holder tabs-act">
         <div class="main-register fl-wrap  modal_view_planner_main">
-            <div class="main-register_title">Documento <span><strong></strong></span></div>
+            <div class="main-register_title">Planner <span><strong></strong></span></div>
             <div class="close-reg"><i class="fal fa-times"></i></div>
             <div class="tabs-container">
                 <div class="soc-log fl-wrap">

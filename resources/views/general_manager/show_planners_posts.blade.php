@@ -83,13 +83,33 @@
                                         </div>
                                     </div>
                                     <div class="geodir-category-footer fl-wrap">
+                                        @empty(!$comments)
+                                        <div class="chat-box-2 fl-wrap">
+                                            @foreach ($comments as $comment)
+                                                <div class="chat-message {{ $comment['type'] }} fl-wrap">
+                                                    <div class="dashboard-message-avatar">
+                                                        <img src="{{ asset('/storage/administrator/uploads/avatars/' . $comment['avatar']) }}"
+                                                            alt="">
+                                                        <span
+                                                            class="chat-message-user-name cmun_sm">{{ $comment['name'] }}</span>
+                                                    </div>
+                                                    <span class="massage-date">{{ $comment['created_at'] }}</span>
+                                                    <p>{{ $comment['comment'] }}</p>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endempty
+                                        <form method="POST" action="{{ route('store.my.comments.post') }}"
+                                        accept-charset="UTF-8" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="chat-widget_input fl-wrap">
-                                            {{-- <input type="hidden" name="id_logo" value="{{ $logo['id'] }}"> --}}
+                                            <input type="hidden" name="id_logo" value="{{ $planner['planner_id'] }}">
                                             <input type="hidden" name="type" value="chat-message_guest">
                                             <textarea name="comment" placeholder="Escriba un comentario"
                                                 required></textarea>
                                             <button type="submit"><i class="fal fa-paper-plane"></i></button>
                                         </div>
+                                    </form>
                                     </div>
                                 </div>
                             </article>

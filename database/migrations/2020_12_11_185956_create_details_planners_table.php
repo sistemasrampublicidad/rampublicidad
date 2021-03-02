@@ -16,10 +16,11 @@ class CreateDetailsPlannersTable extends Migration
         Schema::create('details_planners', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
+            $table->string('idea')->nullable();
             $table->string('description')->nullable();
             $table->string('post_reason')->nullable();
             $table->string('platform')->nullable();
-            $table->string('caption')->nullable();
+            $table->longText('caption')->nullable();
             $table->string('extension')->nullable();
             $table->string('is_approved')->default('no');
             $table->integer('planner_id')->unsigned();

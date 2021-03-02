@@ -582,6 +582,10 @@ section.main-dashboard-sec {
 	padding:50px 30px 60px;
 	min-height:300px;
 }
+.chat-box-2 {
+	padding:0px 30px 60px;
+	/* min-height:300px; */
+}
 .chat-message {
 	padding-left:70px;
 	margin-bottom:30px;

@@ -10,6 +10,7 @@ class DetailsPlanners extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'idea',
         'description',
         'planner_id',
         'branding_id',

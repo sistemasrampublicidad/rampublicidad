@@ -14,10 +14,8 @@
                     <div class="subscribe-widget">
                         <div class="subcribe-form">
                             <form id="subscribe">
-                                <input class="enteremail fl-wrap" name="email" id="subscribe-email"
-                                       placeholder="Enter Your Email" spellcheck="false" type="text">
-                                <button type="submit" id="subscribe-button" class="subscribe-button"><i
-                                        class="fal fa-envelope"></i></button>
+                                <input class="enteremail fl-wrap" name="email" id="subscribe-email" placeholder="Enter Your Email" spellcheck="false" type="text">
+                                <button type="submit" id="subscribe-button" class="subscribe-button"><i class="fal fa-envelope"></i></button>
                                 <label for="subscribe-email" class="subscribe-message"></label>
                             </form>
                         </div>
@@ -47,7 +45,7 @@
                                 </li>
                             </ul>
                             <div class="footer-social">
-                                <span>Find  us on: </span>
+                                <span>Find us on: </span>
                                 <ul class="no-list-style">
                                     <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
@@ -67,30 +65,24 @@
                         <div class="footer-widget-posts fl-wrap">
                             <ul class="no-list-style">
                                 <li class="clearfix">
-                                    <a href="#" class="widget-posts-img"><img src="images/all/1.jpg" class="respimg"
-                                                                              alt=""></a>
+                                    <a href="#" class="widget-posts-img"><img src="images/all/1.jpg" class="respimg" alt=""></a>
                                     <div class="widget-posts-descr">
                                         <a href="#" title="">Vivamus dapibus rutrum</a>
-                                        <span class="widget-posts-date"><i
-                                                class="fal fa-calendar"></i> 21 Mar 09.05 </span>
+                                        <span class="widget-posts-date"><i class="fal fa-calendar"></i> 21 Mar 09.05 </span>
                                     </div>
                                 </li>
                                 <li class="clearfix">
-                                    <a href="#" class="widget-posts-img"><img src="images/all/1.jpg" class="respimg"
-                                                                              alt=""></a>
+                                    <a href="#" class="widget-posts-img"><img src="images/all/1.jpg" class="respimg" alt=""></a>
                                     <div class="widget-posts-descr">
                                         <a href="#" title=""> In hac habitasse platea</a>
-                                        <span class="widget-posts-date"><i
-                                                class="fal fa-calendar"></i> 7 Mar 18.21 </span>
+                                        <span class="widget-posts-date"><i class="fal fa-calendar"></i> 7 Mar 18.21 </span>
                                     </div>
                                 </li>
                                 <li class="clearfix">
-                                    <a href="#" class="widget-posts-img"><img src="images/all/1.jpg" class="respimg"
-                                                                              alt=""></a>
+                                    <a href="#" class="widget-posts-img"><img src="images/all/1.jpg" class="respimg" alt=""></a>
                                     <div class="widget-posts-descr">
                                         <a href="#" title="">Tortor tempor in porta</a>
-                                        <span class="widget-posts-date"><i
-                                                class="fal fa-calendar"></i> 7 Mar 16.42 </span>
+                                        <span class="widget-posts-date"><i class="fal fa-calendar"></i> 7 Mar 16.42 </span>
                                     </div>
                                 </li>
                             </ul>
@@ -103,12 +95,10 @@
                 <div class="col-md-4">
                     <div class="footer-widget fl-wrap ">
                         <h3>Our Twitter</h3>
-                        <div class="twitter-holder fl-wrap scrollbar-inner2" data-simplebar
-                             data-simplebar-auto-hide="false">
+                        <div class="twitter-holder fl-wrap scrollbar-inner2" data-simplebar data-simplebar-auto-hide="false">
                             <div id="footer-twiit"></div>
                         </div>
-                        <a href="#" class="footer-link twitter-link" target="_blank">Follow us <i
-                                class="fal fa-long-arrow-right"></i></a>
+                        <a href="#" class="footer-link twitter-link" target="_blank">Follow us <i class="fal fa-long-arrow-right"></i></a>
                     </div>
                 </div>
                 <!-- footer-widget end-->
@@ -118,7 +108,7 @@
         <div class="footer-bg" data-ran="4"></div>
         <div class="footer-wave">
             <svg viewbox="0 0 100 25">
-                <path fill="#fff" d="M0 30 V12 Q30 17 55 12 T100 11 V30z"/>
+                <path fill="#fff" d="M0 30 V12 Q30 17 55 12 T100 11 V30z" />
             </svg>
         </div>
         <!-- footer bg  end-->
@@ -129,8 +119,7 @@
         <div class="container">
             <div class="copyright"> &#169; Townhub 2019 . All rights reserved.</div>
             <div class="lang-wrap">
-                <div class="show-lang"><span><i class="fal fa-globe-europe"></i><strong>En</strong></span><i
-                        class="fa fa-caret-down arrlan"></i></div>
+                <div class="show-lang"><span><i class="fal fa-globe-europe"></i><strong>En</strong></span><i class="fa fa-caret-down arrlan"></i></div>
                 <ul class="lang-tooltip lang-action no-list-style">
                     <li><a href="#" class="current-lan" data-lantext="En">English</a></li>
                     <li><a href="#" data-lantext="Fr">Français</a></li>
@@ -173,7 +162,7 @@
             <div class="close-reg"><i class="fal fa-times"></i></div>
             <ul class="tabs-menu fl-wrap no-list-style">
                 <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> Login</a></li>
-{{--                <li><a href="#tab-2"><i class="fal fa-user-plus"></i> Register</a></li>--}}
+                {{-- <li><a href="#tab-2"><i class="fal fa-user-plus"></i> Register</a></li>--}}
             </ul>
             <!--tabs -->
             <div class="tabs-container">
@@ -186,124 +175,119 @@
                                 @csrf
 
                                 <div class="form-group row">
-                                    <label for="email"
-                                           class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                                     <div class="col-md-12">
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                               name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="password"
-                                           class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                     <div class="col-md-12">
-                                        <input id="password" type="password"
-                                               class="form-control @error('password') is-invalid @enderror" name="password"
-                                               required autocomplete="current-password">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>
 
-{{--                                <div class="form-group row">--}}
-{{--                                    <div class="col-md-12 offset-md-4">--}}
-{{--                                        <div class="form-check">--}}
-{{--                                            <input class="form-check-input" type="checkbox" name="remember" id="remember"--}}
-{{--                                                {{ old('remember') ? 'checked' : '' }}>--}}
+                                {{-- <div class="form-group row">--}}
+                                {{-- <div class="col-md-12 offset-md-4">--}}
+                                {{-- <div class="form-check">--}}
+                                {{-- <input class="form-check-input" type="checkbox" name="remember" id="remember"--}}
+                                {{-- {{ old('remember') ? 'checked' : '' }}>--}}
 
-{{--                                            <label class="form-check-label" for="remember">--}}
-{{--                                                {{ __('Remember Me') }}--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                {{-- <label class="form-check-label" for="remember">--}}
+                                {{-- {{ __('Remember Me') }}--}}
+                                {{-- </label>--}}
+                                {{-- </div>--}}
+                                {{-- </div>--}}
+                                {{-- </div>--}}
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12 offset-md-12">
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Login') }}
                                         </button>
-{{--                                        <a href="{{URL::to('/')}}/social/login/redirect/google" > <button type="button" class="btn" style="background:#343a40;color:#fff;">--}}
-{{--                                                Google Sign In--}}
-{{--                                            </button></a>--}}
-{{--                                        @if (Route::has('password.request'))--}}
-{{--                                            <a class="btn btn-link" href="{{ route('password.request') }}">--}}
-{{--                                                {{ __('Forgot Your Password?') }}--}}
-{{--                                            </a>--}}
-{{--                                        @endif--}}
+                                        {{-- <a href="{{URL::to('/')}}/social/login/redirect/google" > <button type="button" class="btn" style="background:#343a40;color:#fff;">--}}
+                                            {{-- Google Sign In--}}
+                                            {{-- </button></a>--}}
+                                            {{-- @if (Route::has('password.request'))--}}
+                                            {{-- <a class="btn btn-link" href="{{ route('password.request') }}">--}}
+                                            {{-- {{ __('Forgot Your Password?') }}--}}
+                                            {{-- </a>--}}
+                                            {{-- @endif--}}
                                     </div>
                                 </div>
                             </form>
 
 
-{{--                            <form method="post" name="registerform">--}}
-{{--                                <label>Username or Email Address <span>*</span> </label>--}}
-{{--                                <input name="email" type="text" onClick="this.select()" value="">--}}
-{{--                                <label>Password <span>*</span> </label>--}}
-{{--                                <input name="password" type="password" onClick="this.select()" value="">--}}
-{{--                                <button type="submit" class="btn float-btn color2-bg"> Log In <i--}}
-{{--                                        class="fas fa-caret-right"></i></button>--}}
-{{--                                <div class="clearfix"></div>--}}
-{{--                                <div class="filter-tags">--}}
-{{--                                    <input id="check-a3" type="checkbox" name="check">--}}
-{{--                                    <label for="check-a3">Remember me</label>--}}
-{{--                                </div>--}}
-{{--                            </form>--}}
-{{--                            <div class="lost_password">--}}
-{{--                                <a href="#">Lost Your Password?</a>--}}
-{{--                            </div>--}}
+                            {{-- <form method="post" name="registerform">--}}
+                            {{-- <label>Username or Email Address <span>*</span> </label>--}}
+                            {{-- <input name="email" type="text" onClick="this.select()" value="">--}}
+                            {{-- <label>Password <span>*</span> </label>--}}
+                            {{-- <input name="password" type="password" onClick="this.select()" value="">--}}
+                            {{-- <button type="submit" class="btn float-btn color2-bg"> Log In <i--}}
+                            {{-- class="fas fa-caret-right"></i></button>--}}
+                            {{-- <div class="clearfix"></div>--}}
+                            {{-- <div class="filter-tags">--}}
+                            {{-- <input id="check-a3" type="checkbox" name="check">--}}
+                            {{-- <label for="check-a3">Remember me</label>--}}
+                            {{-- </div>--}}
+                            {{-- </form>--}}
+                            {{-- <div class="lost_password">--}}
+                            {{-- <a href="#">Lost Your Password?</a>--}}
+                            {{-- </div>--}}
                         </div>
                     </div>
                     <!--tab end -->
                     <!--tab -->
-{{--                    <div class="tab">--}}
-{{--                        <div id="tab-2" class="tab-content">--}}
-{{--                            <div class="custom-form">--}}
-{{--                                <form method="post" name="registerform" class="main-register-form"--}}
-{{--                                      id="main-register-form2">--}}
-{{--                                    <label>Full Name <span>*</span> </label>--}}
-{{--                                    <input name="name" type="text" onClick="this.select()" value="">--}}
-{{--                                    <label>Email Address <span>*</span></label>--}}
-{{--                                    <input name="email" type="text" onClick="this.select()" value="">--}}
-{{--                                    <label>Password <span>*</span></label>--}}
-{{--                                    <input name="password" type="password" onClick="this.select()" value="">--}}
-{{--                                    <div class="filter-tags ft-list">--}}
-{{--                                        <input id="check-a2" type="checkbox" name="check">--}}
-{{--                                        <label for="check-a2">I agree to the <a href="#">Privacy Policy</a></label>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="clearfix"></div>--}}
-{{--                                    <div class="filter-tags ft-list">--}}
-{{--                                        <input id="check-a" type="checkbox" name="check">--}}
-{{--                                        <label for="check-a">I agree to the <a href="#">Terms and Conditions</a></label>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="clearfix"></div>--}}
-{{--                                    <button type="submit" class="btn float-btn color2-bg"> Register <i--}}
-{{--                                            class="fas fa-caret-right"></i></button>--}}
-{{--                                </form>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    {{-- <div class="tab">--}}
+                    {{-- <div id="tab-2" class="tab-content">--}}
+                    {{-- <div class="custom-form">--}}
+                    {{-- <form method="post" name="registerform" class="main-register-form"--}}
+                    {{-- id="main-register-form2">--}}
+                    {{-- <label>Full Name <span>*</span> </label>--}}
+                    {{-- <input name="name" type="text" onClick="this.select()" value="">--}}
+                    {{-- <label>Email Address <span>*</span></label>--}}
+                    {{-- <input name="email" type="text" onClick="this.select()" value="">--}}
+                    {{-- <label>Password <span>*</span></label>--}}
+                    {{-- <input name="password" type="password" onClick="this.select()" value="">--}}
+                    {{-- <div class="filter-tags ft-list">--}}
+                    {{-- <input id="check-a2" type="checkbox" name="check">--}}
+                    {{-- <label for="check-a2">I agree to the <a href="#">Privacy Policy</a></label>--}}
+                    {{-- </div>--}}
+                    {{-- <div class="clearfix"></div>--}}
+                    {{-- <div class="filter-tags ft-list">--}}
+                    {{-- <input id="check-a" type="checkbox" name="check">--}}
+                    {{-- <label for="check-a">I agree to the <a href="#">Terms and Conditions</a></label>--}}
+                    {{-- </div>--}}
+                    {{-- <div class="clearfix"></div>--}}
+                    {{-- <button type="submit" class="btn float-btn color2-bg"> Register <i--}}
+                    {{-- class="fas fa-caret-right"></i></button>--}}
+                    {{-- </form>--}}
+                    {{-- </div>--}}
+                    {{-- </div>--}}
+                    {{-- </div>--}}
                     <!--tab end -->
                 </div>
                 <!--tabs end -->
-{{--                <div class="log-separator fl-wrap"><span>or</span></div>--}}
-{{--                <div class="soc-log fl-wrap">--}}
-{{--                    <p>For faster login or register use your social account.</p>--}}
-{{--                    <a href="#" class="facebook-log"> Facebook</a>--}}
-{{--                </div>--}}
+                {{-- <div class="log-separator fl-wrap"><span>or</span></div>--}}
+                {{-- <div class="soc-log fl-wrap">--}}
+                {{-- <p>For faster login or register use your social account.</p>--}}
+                {{-- <a href="#" class="facebook-log"> Facebook</a>--}}
+                {{-- </div>--}}
                 <div class="wave-bg">
                     <div class='wave -one'></div>
                     <div class='wave -two'></div>
@@ -329,10 +313,52 @@
 <script src="{{ asset('template/js/scripts.js') }}"></script>
 <script src="{{ asset('template/js/myjs/modals.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js" integrity="sha512-o0rWIsZigOfRAgBxl4puyd0t6YKzeAw9em/29Ag7lhCQfaaua/mDwnpE2PVzwqJ08N7/wqrgdjc2E0mwdSY2Tg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 </body>
+
 </html>
 
+
+<script>
+    $(document).ready(function() {
+        let dataString = "id=" + $('#id_customer').val();
+        $.ajax({
+            type: "GET",
+            url: "/show_my_calendar",
+            data: dataString,
+            dataType: "json",
+            success: function(data) {
+                console.log(data)
+                $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next',
+                        center: 'title',
+                        right: 'month,agendaDay'
+                    },
+                    defaultDate: '2021-07-09',
+                    buttonIcons: true,
+                    weekNumbers: false,
+                    editable: true,
+                    eventLimit: true,
+                    events: data,
+                    dayClick: function(date, jsEvent, view) {
+
+                        alert('Has hecho click en: ' + date.format());
+                    },
+                    eventClick: function(calEvent, jsEvent, view) {
+                        $('.modal_view_planner , .reg-overlay').fadeIn(200);
+                        $(".modal_view_planner_main").addClass("vis_mr");
+                        $("html, body").addClass("hid-body");
+                        $('#date_event').text(calEvent.title);
+                        // $('#event-description').html(calEvent.description);
+                        // $('#modal-event').modal();
+                    },
+                });
+            },
+        });
+    });
+</script>
 
 @if (session()->has('success'))
 <script>
@@ -345,7 +371,8 @@
         });
         Toast.fire({
             icon: 'success',
-            title: ' {{ session()->get('success') }}'
+            title: ' {{ session()->get('
+            success ') }}'
         })
     });
 </script>
@@ -361,7 +388,8 @@
         });
         Toast.fire({
             icon: 'warning',
-            title: ' {{ session()->get('no-success') }}'
+            title: ' {{ session()->get('
+            no - success ') }}'
         })
     });
 </script>
@@ -378,7 +406,11 @@
         });
         Toast.fire({
             icon: 'error',
-            title:  {{ session()->get('danger-success') }}
+            title: {
+                {
+                    session() - > get('danger-success')
+                }
+            }
         })
     });
 </script>

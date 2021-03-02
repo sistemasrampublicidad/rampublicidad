@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\administrator\CommentsLogos;
+use App\Models\administrator\CommentsPlanners;
 use App\Models\administrator\Logos;
 use App\Models\administrator\Planners;
 use App\Models\User;
@@ -38,6 +39,7 @@ class CustomersController extends Controller
             ->select('planners.*','planners.id as planner_id','details_planners.*','brandings.*')
             ->get()
             ->toArray();
+            
 
         return view('customers.show_my_planners', compact('customer', 'planners'));
     }
@@ -68,7 +70,19 @@ class CustomersController extends Controller
 
         return back()->with('success','Se guardó el comentario');
     }
+    public function store_my_comments_post(Request $request)
+    {
+        $new_comment = CommentsPlanners::create([
+            'planner_id' => $request->get('id_logo'),
+            'type' => $request->get('type'),
+            'comment' => $request->get('comment'),
+            'commentator_id' => auth()->user()->id,
+        ]);
 
+        $new_comment->save();
+
+        return back()->with('success','Se guardó el comentario');
+    }
     public function show_imagen_modal(Request $request)
     {
         header('Content-Type: application/json');

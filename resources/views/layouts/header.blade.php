@@ -17,6 +17,8 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('template/css/style.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('template/css/color.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('template/css/dashboard-style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" integrity="sha512-KXkS7cFeWpYwcoXxyfOumLyRGXMp7BTMTjwrgjMg0+hls4thG2JGzRgQtRfnAuKTn2KWTDZX4UdPg+xTs8k80Q==" crossorigin="anonymous" /><script type='text/javascript' src='js/moment.min.js'></script>
+
 
     <!--=============== favicons ===============-->
     <link rel="shortcut icon" href="images/favicon.ico">

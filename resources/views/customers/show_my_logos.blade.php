@@ -41,20 +41,31 @@
                 <!-- dashboard-menu  end-->
                 <!-- dashboard content-->
                 <div class="col-md-9">
-                    <div class="dashboard-title   fl-wrap">
-                        <h3> Mis Logos </h3>
+                    <div class="dashboard-title fl-wrap">
+                        <h3>Mis Identidades </h3>
+                        {{-- <a href="{{ route('add.posts', $customer['id']) }}" class=" brd-show-share color2-bg"
+                        data-tooltip="Agregar">Agregar planner<i class="fal fa-plus"></i></a> --}}
+                        <div class="log-separator fl-wrap"><span></span></div>
+
+                        <div class="box-widget-item fl-wrap">
+                            <div class="banner-wdget fl-wrap">
+                                <div class="overlay"></div>
+                                <div class="banner-wdget-content fl-wrap">
+                                    <h4>Still need help in filling out the form  ? Visit our help page. </h4>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                     <div class="dashboard-list-box  fl-wrap">
                         @foreach($logos as $logo)
                         <div class="dashboard-list fl-wrap">
                             <div class="dashboard-message">
                                 <div class="booking-list-contr">
-                                    <a href="" class="color-bg tolt aaaa-open" data-microtip-position="left"
-                                        data-tooltip="Visualizar" data-tittle="{{$logo['logo_id']}}"><i class="fal fa-expand-arrows-alt"></i></a>
                                     <a href="/download_logos/{{ $logo['path'] }}" class="color-bg tolt"
                                         data-microtip-position="left" data-tooltip="Descargar"><i
                                             class="fal fa-download"></i></a>
-                                    <a href="{{ route('show.comments', $logo['logo_id']) }}" class="color-bg tolt"
+                                    <a href="{{ route('show.my.comments', $logo['logo_id']) }}" class="color-bg tolt"
                                         data-microtip-position="left" data-tooltip="Comentar"><i
                                             class="fal fa-comments"></i></a>
                                 </div>
@@ -64,7 +75,9 @@
                                             <div class="swiper-wrapper lightgallery">
                                                 <div class="swiper-slide hov_zoom swiper-slide-active"
                                                     data-swiper-slide-index="0">
-                                                    <img src="{{ asset('/storage/administrator/uploads/logos/'.$logo['path']) }}" alt="">
+                                                    <a href="{{ asset('/storage/administrator/uploads/logos/'.$logo['path']) }}" target="_blank">
+                                                        <img src="{{ asset('/storage/administrator/uploads/logos/'.$logo['path']) }}" alt="">
+                                                    </a>
                                                     <h4><a href="listing-single.html">{{ $logo['name'] }}</a></h4>
                                                     <div class="geodir-category-location clearfix"><a href="#">
                                                             {{ $logo['description'] }}<br>{{ $logo['created_at'] }}</a>
